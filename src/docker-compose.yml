@@ -1,0 +1,29 @@
+version: '3.4'
+
+services:
+  customer-api:
+    image: ${DOCKER_REGISTRY-}customer-api
+    build:
+      context: .
+      dockerfile: Microservices/Poke.CloudSalesSystem.Customers/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - SEQ_SERVER=seq
+      - Seq__ServerUrl=http://seq:5341
+    ports:
+      - 7001:80    
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro   
+      
+  seq:
+    image: datalust/seq
+    container_name: seq
+    environment:
+      - ACCEPT_EULA=Y
+    ports:
+      - 5341:5341
+      - 8089:80
+    volumes:
+      - ./.containers/seq:/data
