@@ -28,8 +28,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddSwaggerDocument(settings =>
 {
-    settings.Title = "Customers API";
-    settings.Description = "Cloud Sales System Customers API";
+    settings.Title = "Customers Management API";
+    settings.Description = "Cloud Sales System Customers Management API";
     settings.PostProcess = document =>
     {
         document.Info.Contact = new OpenApiContact
@@ -49,6 +49,8 @@ if (app.Environment.IsDevelopment())
     app.UseOpenApi();
     app.UseSwaggerUI();
 }
+
+app.StartMigration();
 
 app.UseAuthorization();
 

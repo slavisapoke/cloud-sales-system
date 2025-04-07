@@ -10,7 +10,9 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
       - SEQ_SERVER=seq
-      - Seq__ServerUrl=http://seq:5341
+      - ConnectionStrings__Postgres=Host=customer-postgres;Port=5432;Database=customersDb;Username=guest;Password=guest
+    depends_on:
+      - customer-postgres
     ports:
       - 7001:80    
     volumes:
@@ -27,3 +29,18 @@ services:
       - 8089:80
     volumes:
       - ./.containers/seq:/data
+      
+  customer-postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: guest
+      POSTGRES_PASSWORD: guest
+      POSTGRES_DB: customersDb
+    ports:
+      - 6432:5432  
+    volumes:
+      - postgres-customer-data:/var/lib/postgresql/data 
+      
+
+volumes:
+  postgres-customer-data:

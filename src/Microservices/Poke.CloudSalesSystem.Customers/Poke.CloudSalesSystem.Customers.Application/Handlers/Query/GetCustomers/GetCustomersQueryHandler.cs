@@ -1,31 +1,20 @@
-﻿using FluentResults;
+﻿using AutoMapper;
+using FluentResults;
 using MediatR;
-using Microsoft.Extensions.Logging;
-using Poke.CloudSalesSystem.Contracts.Events.Broker;
+using Microsoft.EntityFrameworkCore;
 using Poke.CloudSalesSystem.Customers.Application.Handlers.Query.GetCustomers;
 using Poke.CloudSalesSystem.Customers.Application.Model;
+using Poke.CloudSalesSystem.Customers.Domain.Repository;
 
 namespace Poke.CloudSalesSystem.Customers.Application.Handlers.Query.GetCase;
 
 public class GetCustomersQueryHandler(
-    ILogger<GetCustomersQueryHandler> logger) : IRequestHandler<GetCustomersQuery, Result<IEnumerable<Customer>>>
+    ICustomerDbContext dbContext,
+    IMapper mapper) : IRequestHandler<GetCustomersQuery, Result<IEnumerable<Customer>>>
 {
     public async Task<Result<IEnumerable<Customer>>> Handle(GetCustomersQuery request, CancellationToken cancellationToken)
     {
-        logger.LogInformation(new TestEvent().ToString());
-
-        return await Task.FromResult<List<Customer>>(new()
-        {
-            new()
-            {
-                Id = Guid.NewGuid(),
-                Name = "Slavisa Pokimica"
-            },
-            new()
-            {
-                Id = Guid.NewGuid(),
-                Name = "Makedonsko Devojce"
-            }
-        });
+        var customers = await dbContext.Customers.ToListAsync();
+        return mapper.Map<List<Customer>>(customers);
     }
 }
