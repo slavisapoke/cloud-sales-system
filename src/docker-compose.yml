@@ -18,7 +18,25 @@ services:
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro   
-      
+   
+  accounts-api:
+    image: ${DOCKER_REGISTRY-}accounts-api
+    build:
+      context: .
+      dockerfile: Microservices/Poke.CloudSalesSystem.Accounts/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - SEQ_SERVER=seq
+      - ConnectionStrings__Postgres=Host=accounts-postgres;Port=5432;Database=accountsDb;Username=guest;Password=guest
+    depends_on:
+      - accounts-postgres
+    ports:
+      - 7002:80
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+   
   seq:
     image: datalust/seq
     container_name: seq
@@ -30,6 +48,7 @@ services:
     volumes:
       - ./.containers/seq:/data
       
+##### DATABASE #####
   customer-postgres:
     image: postgres
     environment:
@@ -40,7 +59,18 @@ services:
       - 6432:5432  
     volumes:
       - postgres-customer-data:/var/lib/postgresql/data 
+  accounts-postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: guest
+      POSTGRES_PASSWORD: guest
+      POSTGRES_DB: accountsDb
+    ports:
+      - 7432:5432  
+    volumes:
+      - postgres-accounts-data:/var/lib/postgresql/data 
       
 
 volumes:
   postgres-customer-data:
+  postgres-accounts-data:

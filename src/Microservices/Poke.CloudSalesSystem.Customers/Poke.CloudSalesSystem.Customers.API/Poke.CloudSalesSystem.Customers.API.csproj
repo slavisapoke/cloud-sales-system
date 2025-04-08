@@ -21,8 +21,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\Poke.CloudSalesSystem.Common\Poke.CloudSalesSystem.Common\Poke.CloudSalesSystem.Common.csproj" />
     <ProjectReference Include="..\Poke.CloudSalesSystem.Customers.Application\Poke.CloudSalesSystem.Customers.Application.csproj" />
-    <ProjectReference Include="..\Poke.CloudSalesSystem.Customers.Common\Poke.CloudSalesSystem.Customers.Common.csproj" />
     <ProjectReference Include="..\Poke.CloudSalesSystem.Customers.Infrastructure\Poke.CloudSalesSystem.Customers.Infrastructure.csproj" />
   </ItemGroup>
 
