@@ -13,12 +13,11 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Handlers\Command\" />
-    <Folder Include="Pipeline\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\Common\Poke.CloudSalesSystem.Common\Poke.CloudSalesSystem.Common\Poke.CloudSalesSystem.Common.csproj" />
     <ProjectReference Include="..\..\Common\Poke.CloudSalesSystem.Contracts.Events\Poke.CloudSalesSystem.Contracts.Events\Poke.CloudSalesSystem.Contracts.Events.csproj" />
-    <ProjectReference Include="..\Poke.CloudSalesSystem.Accounts.Domain\Poke.CloudSalesSystem.Accounts.Domain.csproj" />
+    <ProjectReference Include="..\Poke.CloudSalesSystem.Licenses.Domain\Poke.CloudSalesSystem.Licenses.Domain.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Pipeline\" />
   </ItemGroup>
 </Project>

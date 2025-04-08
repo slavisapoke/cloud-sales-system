@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Poke.CloudSalesSystem.Customers.Application.Pipeline;
+using Poke.CloudSalesSystem.Common.MediatR.Pipeline;
 
 namespace Poke.CloudSalesSystem.Customers.Application;
 

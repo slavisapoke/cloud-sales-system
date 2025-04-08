@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Poke.CloudSalesSystem.Common.MediatR.Pipeline;
 
-namespace Poke.CloudSalesSystem.Accounts.Application;
+namespace Poke.CloudSalesSystem.Licenses.Application;
 
 public static class DIExtensions
 {

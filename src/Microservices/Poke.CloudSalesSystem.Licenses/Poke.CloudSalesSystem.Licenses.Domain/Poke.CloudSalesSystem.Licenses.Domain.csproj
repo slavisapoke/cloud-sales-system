@@ -7,9 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MediatR" Version="12.5.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.14" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Abstraction\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Poke.CloudSalesSystem.Common\Poke.CloudSalesSystem.Common\Poke.CloudSalesSystem.Common.csproj" />
   </ItemGroup>
 
 </Project>
