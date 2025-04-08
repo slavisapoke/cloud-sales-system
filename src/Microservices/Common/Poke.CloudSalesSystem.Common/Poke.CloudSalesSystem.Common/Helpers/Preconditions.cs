@@ -1,7 +1,7 @@
-﻿namespace Poke.CloudSalesSystem.Customers.Common.Helpers;
+﻿namespace Poke.CloudSalesSystem.Common.Helpers;
 
 /// <summary>
-/// Could be part of library nuget
+/// Object nullability validation
 /// </summary>
 public static class Preconditions
 {

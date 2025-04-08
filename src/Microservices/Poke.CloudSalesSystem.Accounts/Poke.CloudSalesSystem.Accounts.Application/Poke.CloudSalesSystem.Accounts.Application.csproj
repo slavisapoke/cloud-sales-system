@@ -18,6 +18,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Poke.CloudSalesSystem.Common\Poke.CloudSalesSystem.Common\Poke.CloudSalesSystem.Common.csproj" />
     <ProjectReference Include="..\..\Common\Poke.CloudSalesSystem.Contracts.Events\Poke.CloudSalesSystem.Contracts.Events\Poke.CloudSalesSystem.Contracts.Events.csproj" />
-    <ProjectReference Include="..\Poke.CloudSalesSystem.Customers.Domain\Poke.CloudSalesSystem.Customers.Domain.csproj" />
+    <ProjectReference Include="..\Poke.CloudSalesSystem.Accounts.Domain\Poke.CloudSalesSystem.Accounts.Domain.csproj" />
   </ItemGroup>
 </Project>

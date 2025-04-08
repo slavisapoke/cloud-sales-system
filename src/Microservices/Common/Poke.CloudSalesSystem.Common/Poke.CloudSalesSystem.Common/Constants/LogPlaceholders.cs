@@ -1,5 +1,8 @@
-﻿namespace Poke.CloudSalesSystem.Customers.Common.Constants;
+﻿namespace Poke.CloudSalesSystem.Common.Constants;
 
+/// <summary>
+/// Log placeholders
+/// </summary>
 public static class LogPlaceholders
 {
     public const string REQUEST_DATA = "{@RequestData}";

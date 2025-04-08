@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Poke.CloudSalesSystem.Common.Constants;
 
-namespace Poke.CloudSalesSystem.Customers.Application.Pipeline;
+namespace Poke.CloudSalesSystem.Accounts.Application.Pipeline;
 
 public class LogBehavior<TRequest, TResponse>
     : IPipelineBehavior<TRequest, TResponse>

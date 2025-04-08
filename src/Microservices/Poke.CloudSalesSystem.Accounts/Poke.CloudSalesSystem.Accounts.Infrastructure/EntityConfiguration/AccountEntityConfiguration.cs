@@ -1,16 +1,19 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Poke.CloudSalesSystem.Customers.Domain.Model;
+using Poke.CloudSalesSystem.Accounts.Domain.Model;
 
-namespace Poke.CloudSalesSystem.Customers.Infrastructure.EntityConfiguration;
+namespace Poke.CloudSalesSystem.Accounts.Infrastructure.EntityConfiguration;
 
-public class CustomerEntityConfiguration : IEntityTypeConfiguration<CustomerEntity>
+public class AccountEntityConfiguration : IEntityTypeConfiguration<AccountEntity>
 {
-    public void Configure(EntityTypeBuilder<CustomerEntity> builder)
+    public void Configure(EntityTypeBuilder<AccountEntity> builder)
     {
-        builder.ToTable("customers");
+        builder.ToTable("accounts");
 
         builder.HasKey(x => x.Id);
+
+        builder.Property(x => x.CustomerId)
+           .IsRequired();
 
         builder.Property(x => x.Name)
            .IsRequired()
