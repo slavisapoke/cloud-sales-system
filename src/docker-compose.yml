@@ -11,8 +11,8 @@ services:
       - ASPNETCORE_URLS=http://+:80
       - SEQ_SERVER=seq
       - ConnectionStrings__Postgres=Host=customer-postgres;Port=5432;Database=customersDb;Username=guest;Password=guest
-    depends_on:
-      - customer-postgres
+#   depends_on:
+#     - customer-postgres     ##added retries, maybe no need for dependency
     ports:
       - 7001:80    
     volumes:
@@ -29,8 +29,8 @@ services:
       - ASPNETCORE_URLS=http://+:80
       - SEQ_SERVER=seq
       - ConnectionStrings__Postgres=Host=accounts-postgres;Port=5432;Database=accountsDb;Username=guest;Password=guest
-    depends_on:
-      - accounts-postgres
+#   depends_on:
+#     - accounts-postgres   ##added retries, maybe no need for dependency
     ports:
       - 7002:80
     volumes:
