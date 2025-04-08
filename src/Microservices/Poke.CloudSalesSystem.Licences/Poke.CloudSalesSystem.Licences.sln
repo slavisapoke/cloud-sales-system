@@ -1,0 +1,81 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35027.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{053BEC27-2FCA-4B52-AB2D-B8AB63E29276}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{D63064F7-9527-4244-B212-C6856863A5C2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ShouldBeNuget", "ShouldBeNuget", "{9A9D630B-3178-423F-9CEE-088A8C6F9EE8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poke.CloudSalesSystem.Common", "..\Common\Poke.CloudSalesSystem.Common\Poke.CloudSalesSystem.Common\Poke.CloudSalesSystem.Common.csproj", "{7493F793-1DB4-45FC-9475-D92FDB56E3C0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poke.CloudSalesSystem.Contracts.Events", "..\Common\Poke.CloudSalesSystem.Contracts.Events\Poke.CloudSalesSystem.Contracts.Events\Poke.CloudSalesSystem.Contracts.Events.csproj", "{AFB4082C-9B3F-4361-8D78-A85076BF3AB2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poke.CloudSalesSystem.Licences.Tests", "Poke.CloudSalesSystem.Licences.Tests\Poke.CloudSalesSystem.Licences.Tests.csproj", "{6798FEB4-3241-4899-9BC2-346893CFDD76}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poke.CloudSalesSystem.Licences.API", "Poke.CloudSalesSystem.Licences.API\Poke.CloudSalesSystem.Licences.API.csproj", "{2BA348D8-4291-4B22-B1D8-981C100A3991}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poke.CloudSalesSystem.Licences.Application", "Poke.CloudSalesSystem.Licences.Application\Poke.CloudSalesSystem.Licences.Application.csproj", "{C4D164B5-614A-45F0-A5F2-DE9DA6AF3ACD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poke.CloudSalesSystem.Licences.Domain", "Poke.CloudSalesSystem.Licences.Domain\Poke.CloudSalesSystem.Licences.Domain.csproj", "{D77C3E2E-C595-41E2-8001-7E11D4D47167}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poke.CloudSalesSystem.Licences.Infrastructure", "Poke.CloudSalesSystem.Licences.Infrastructure\Poke.CloudSalesSystem.Licences.Infrastructure.csproj", "{0E7A4FE5-F2B4-4420-A31C-23634FA3BB10}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C80CEDA5-D5CF-464E-BFFB-0857947938E2}"
+	ProjectSection(SolutionItems) = preProject
+		Dockerfile = Dockerfile
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7493F793-1DB4-45FC-9475-D92FDB56E3C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7493F793-1DB4-45FC-9475-D92FDB56E3C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7493F793-1DB4-45FC-9475-D92FDB56E3C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7493F793-1DB4-45FC-9475-D92FDB56E3C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFB4082C-9B3F-4361-8D78-A85076BF3AB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFB4082C-9B3F-4361-8D78-A85076BF3AB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFB4082C-9B3F-4361-8D78-A85076BF3AB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFB4082C-9B3F-4361-8D78-A85076BF3AB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6798FEB4-3241-4899-9BC2-346893CFDD76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6798FEB4-3241-4899-9BC2-346893CFDD76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6798FEB4-3241-4899-9BC2-346893CFDD76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6798FEB4-3241-4899-9BC2-346893CFDD76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BA348D8-4291-4B22-B1D8-981C100A3991}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BA348D8-4291-4B22-B1D8-981C100A3991}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BA348D8-4291-4B22-B1D8-981C100A3991}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BA348D8-4291-4B22-B1D8-981C100A3991}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4D164B5-614A-45F0-A5F2-DE9DA6AF3ACD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4D164B5-614A-45F0-A5F2-DE9DA6AF3ACD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4D164B5-614A-45F0-A5F2-DE9DA6AF3ACD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4D164B5-614A-45F0-A5F2-DE9DA6AF3ACD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D77C3E2E-C595-41E2-8001-7E11D4D47167}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D77C3E2E-C595-41E2-8001-7E11D4D47167}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D77C3E2E-C595-41E2-8001-7E11D4D47167}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D77C3E2E-C595-41E2-8001-7E11D4D47167}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E7A4FE5-F2B4-4420-A31C-23634FA3BB10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E7A4FE5-F2B4-4420-A31C-23634FA3BB10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E7A4FE5-F2B4-4420-A31C-23634FA3BB10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E7A4FE5-F2B4-4420-A31C-23634FA3BB10}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7493F793-1DB4-45FC-9475-D92FDB56E3C0} = {9A9D630B-3178-423F-9CEE-088A8C6F9EE8}
+		{AFB4082C-9B3F-4361-8D78-A85076BF3AB2} = {9A9D630B-3178-423F-9CEE-088A8C6F9EE8}
+		{6798FEB4-3241-4899-9BC2-346893CFDD76} = {D63064F7-9527-4244-B212-C6856863A5C2}
+		{2BA348D8-4291-4B22-B1D8-981C100A3991} = {053BEC27-2FCA-4B52-AB2D-B8AB63E29276}
+		{C4D164B5-614A-45F0-A5F2-DE9DA6AF3ACD} = {053BEC27-2FCA-4B52-AB2D-B8AB63E29276}
+		{D77C3E2E-C595-41E2-8001-7E11D4D47167} = {053BEC27-2FCA-4B52-AB2D-B8AB63E29276}
+		{0E7A4FE5-F2B4-4420-A31C-23634FA3BB10} = {053BEC27-2FCA-4B52-AB2D-B8AB63E29276}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {52312548-FE8D-46BC-88A7-AC03FAFE1177}
+	EndGlobalSection
+EndGlobal
