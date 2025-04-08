@@ -4,7 +4,7 @@ using Poke.CloudSalesSystem.Common.Database.Abstraction;
 namespace Poke.CloudSalesSystem.Common.Database;
 
 /// <summary>
-/// Represents base class for EFCore DbContext
+/// Represents base class for EFCore DbContext. Handles the logic of updating timestamp fields 
 /// </summary>
 public class BaseDbContext : DbContext
 {

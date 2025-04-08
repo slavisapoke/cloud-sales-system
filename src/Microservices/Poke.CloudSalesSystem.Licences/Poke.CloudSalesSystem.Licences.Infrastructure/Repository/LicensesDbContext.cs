@@ -6,7 +6,6 @@ using Poke.CloudSalesSystem.Common.Database;
 
 namespace Infrastructure.Repository;
  
-
 public class LicencesDbContext : BaseDbContext, ILicencesDbContext
 {
     public DbSet<ServiceEntity> Services { get; set; }

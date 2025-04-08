@@ -18,5 +18,9 @@ public class ServiceEntityConfiguration : IEntityTypeConfiguration<ServiceEntity
 
         builder.Property(x => x.Description)
             .HasMaxLength(500);
+
+        builder.HasMany(x => x.Subscriptions)
+            .WithOne(ser => ser.Service)
+            .HasForeignKey(x => x.ServiceId);
     }
 }

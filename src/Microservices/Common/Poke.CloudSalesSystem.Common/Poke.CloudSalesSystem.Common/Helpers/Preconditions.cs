@@ -37,4 +37,14 @@ public static class Preconditions
 
         throw string.IsNullOrEmpty(message) ? new ArgumentNullException(paramName) : new ArgumentNullException(paramName, message);
     }
+
+    public static T CheckGreaterThanZero<T>(T value) where T : struct, IComparable<T>
+    {
+        if (value.CompareTo(default) > 0)
+        { 
+            return value;
+        }
+
+        throw new ArgumentOutOfRangeException(nameof(value), $"Value {value} must be greater than zero.");
+    }
 }
