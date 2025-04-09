@@ -9,6 +9,8 @@ namespace Infrastructure.Repository;
 public class LicencesDbContext : BaseDbContext, ILicencesDbContext
 {
     public DbSet<ServiceEntity> Services { get; set; }
+    public DbSet<LicenceEntity> Licences { get; set; }
+    public DbSet<SubscriptionEntity> Subscriptions { get; set; }
 
     public LicencesDbContext(DbContextOptions<LicencesDbContext> options,
         TimeProvider timeProvider)

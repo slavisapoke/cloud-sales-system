@@ -14,7 +14,7 @@ Log.Logger = new LoggerConfiguration()
 builder.Logging.ClearProviders();
 builder.Logging.AddSerilog();
 
-Log.Information("Starting Licences API...");
+Log.Information("Starting Licence API...");
 
 builder.Services.RegisterServices(builder.Configuration);
 
@@ -28,8 +28,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddSwaggerDocument(settings =>
 {
-    settings.Title = "Licences Management API";
-    settings.Description = "Cloud Sales System Licences Management API";
+    settings.Title = "Licence Management API";
+    settings.Description = "Cloud Sales System Licence Management API";
     settings.PostProcess = document =>
     {
         document.Info.Contact = new OpenApiContact
