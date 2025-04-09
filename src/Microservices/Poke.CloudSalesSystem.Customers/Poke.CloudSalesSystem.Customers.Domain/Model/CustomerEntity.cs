@@ -1,4 +1,4 @@
-﻿using Poke.CloudSalesSystem.Customers.Domain.Abstraction;
+﻿using Poke.CloudSalesSystem.Common.Database.Abstraction;
 
 namespace Poke.CloudSalesSystem.Customers.Domain.Model;
 
