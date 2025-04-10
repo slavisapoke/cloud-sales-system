@@ -1,5 +1,8 @@
 using NSwag;
-using Poke.CloudSalesSystem.Accounts.API.Extensions;
+using Poke.CloudSalesSystem.Common.CloudComputingClient;
+using Poke.CloudSalesSystem.Common.Helpers;
+using Poke.CloudSalesSystem.Products.API.Extensions;
+using Poke.CloudSalesSystem.Products.Application.Configuration;
 using Serilog;
 using System.Text.Json.Serialization;
 
@@ -12,10 +15,22 @@ Log.Logger = new LoggerConfiguration()
     .WriteTo.Console(outputTemplate: logTemplate)
     .CreateLogger();
 
+
 builder.Logging.ClearProviders();
 builder.Logging.AddSerilog();
 
-Log.Information("Starting Accounts API...");
+Log.Information("Starting Products API...");
+
+var providerConfig = builder.Configuration
+    .GetSection(nameof(ProductProvidersConfiguration))
+    .Get<ProductProvidersConfiguration>();
+
+Preconditions.CheckNotNull(providerConfig, nameof(providerConfig));
+
+builder.Services.AddSingleton(providerConfig!);
+
+builder.Services.Configure<CloudComputingConfiguration>(
+        builder.Configuration.GetSection(nameof(CloudComputingConfiguration)));
 
 builder.Services.RegisterServices(builder.Configuration);
 
@@ -25,15 +40,15 @@ builder.Services.AddControllers().AddJsonOptions(options =>
 {
     options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
 }); 
-
+ 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
 builder.Services.AddSwaggerDocument(settings =>
 {
-    settings.Title = "Accounts Management API";
-    settings.Description = "Cloud Sales System Accounts Management API";
+    settings.Title = "Product Management API";
+    settings.Description = "Cloud Sales System Product Management API";
     settings.PostProcess = document =>
     {
         document.Info.Contact = new OpenApiContact
@@ -47,13 +62,12 @@ builder.Services.AddSwaggerDocument(settings =>
 
 var app = builder.Build();
 
+// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseOpenApi();
     app.UseSwaggerUI();
 }
-
-app.StartMigration();
 
 app.UseAuthorization();
 
