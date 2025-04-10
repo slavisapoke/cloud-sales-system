@@ -120,7 +120,18 @@ internal class MockHttpClientBuilder
 
         handler.When(endpoint)
             .Respond(HttpStatusCode.OK,
-                JsonContent.Create(CancelSubscriptionResponse.Success()));
+                JsonContent.Create(ActionResponse.Success("Subscription canceled successfully")));
+
+        return this;
+    }
+
+    public MockHttpClientBuilder WithExtendLicence(Guid licenceId, Guid accountId, DateTimeOffset until)
+    {
+        var endpoint = $"{_serviceUrl}/licence/{licenceId}/account/{accountId}/extend-until/{until}";
+
+        handler.When(endpoint)
+            .Respond(HttpStatusCode.OK,
+                JsonContent.Create(ActionResponse.Success($"Licence extended unti {until}")));
 
         return this;
     }

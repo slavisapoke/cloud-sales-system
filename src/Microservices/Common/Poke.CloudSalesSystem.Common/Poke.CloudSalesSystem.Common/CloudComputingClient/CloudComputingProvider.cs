@@ -68,7 +68,7 @@ public class CloudComputingProvider : ICloudComputingProvider
         return Result.Ok(result!);
     }
 
-    public async Task<IResult<CancelSubscriptionResponse>> CancelSubscription(Guid serviceId, Guid accountId, CancellationToken cancellationToken)
+    public async Task<IResult<ActionResponse>> CancelSubscription(Guid serviceId, Guid accountId, CancellationToken cancellationToken)
     {
         using var client = new MockHttpClientBuilder(_ccConfig.ServiceUrl)
             .WithCancelSubscription(serviceId, accountId)
@@ -81,12 +81,36 @@ public class CloudComputingProvider : ICloudComputingProvider
         if (!orderLicencesRequest.IsSuccessStatusCode)
         {
             var responseString = await orderLicencesRequest.Content.ReadAsStringAsync();
-            return Result.Fail<CancelSubscriptionResponse>(
+            return Result.Fail<ActionResponse>(
                 $"Status code: {orderLicencesRequest.StatusCode}, response content: {responseString}");
         }
 
         var result = await orderLicencesRequest.Content
-            .ReadFromJsonAsync<CancelSubscriptionResponse>(cancellationToken);
+            .ReadFromJsonAsync<ActionResponse>(cancellationToken);
+
+        return Result.Ok(result!);
+    }
+
+    public async Task<IResult<ActionResponse>> ExtendLicence(Guid licenceId, Guid accountId, DateTimeOffset until,
+        CancellationToken cancellationToken)
+    {
+        using var client = new MockHttpClientBuilder(_ccConfig.ServiceUrl)
+            .WithExtendLicence(licenceId, accountId, until)
+            .Build();
+
+        var orderLicencesRequest =
+            await client.GetAsync($"{_ccConfig.ServiceUrl}/licence/{licenceId}/account/{accountId}/extend-until/{until}",
+                cancellationToken);
+
+        if (!orderLicencesRequest.IsSuccessStatusCode)
+        {
+            var responseString = await orderLicencesRequest.Content.ReadAsStringAsync();
+            return Result.Fail<ActionResponse>(
+                $"Status code: {orderLicencesRequest.StatusCode}, response content: {responseString}");
+        }
+
+        var result = await orderLicencesRequest.Content
+            .ReadFromJsonAsync<ActionResponse>(cancellationToken);
 
         return Result.Ok(result!);
     }

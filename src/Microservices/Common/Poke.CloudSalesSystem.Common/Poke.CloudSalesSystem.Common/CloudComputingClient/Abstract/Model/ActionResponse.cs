@@ -1,21 +1,13 @@
 ﻿
 namespace Poke.CloudSalesSystem.Common.CloudComputingClient.Abstract.Model;
 
-public class CancelSubscriptionResponse
+public class ActionResponse
 {
     public bool IsSuccess { get; init; }
     public string? Message { get; init; } 
     public DateTimeOffset? CancelledAt { get; init; }
 
-    public static CancelSubscriptionResponse Success() =>
-        new()
-        {
-            Message = "Subscription canceled successfully",
-            CancelledAt = DateTime.Now,
-            IsSuccess = true
-        };
-
-    public static CancelSubscriptionResponse Success(string message) =>
+    public static ActionResponse Success(string message) =>
         new()
         {
             Message = message,
@@ -23,7 +15,7 @@ public class CancelSubscriptionResponse
             IsSuccess = true
         };
 
-    public static CancelSubscriptionResponse Failure(string message) =>
+    public static ActionResponse Failure(string message) =>
         new ()
         {
             Message = message,

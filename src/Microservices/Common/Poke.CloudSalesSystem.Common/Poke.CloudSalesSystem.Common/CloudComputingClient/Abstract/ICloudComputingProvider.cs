@@ -11,6 +11,9 @@ public interface ICloudComputingProvider
     Task<IResult<OrderLicencesResponse>> OrderLicences(Guid accountId, Guid serviceId, int quantity, 
         CancellationToken cancellationToken);
 
-    Task<IResult<CancelSubscriptionResponse>> CancelSubscription(Guid serviceId, Guid accountId,
+    Task<IResult<ActionResponse>> CancelSubscription(Guid serviceId, Guid accountId,
+        CancellationToken cancellationToken);
+
+    Task<IResult<ActionResponse>> ExtendLicence(Guid licenceId, Guid accountId, DateTimeOffset until,
         CancellationToken cancellationToken);
 }

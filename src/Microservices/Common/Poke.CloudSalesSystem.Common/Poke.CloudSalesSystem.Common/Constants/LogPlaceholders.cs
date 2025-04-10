@@ -14,4 +14,5 @@ public static class LogPlaceholders
     public const string ACCOUNT_ID = "{AccountId}";
     public const string SERVICE_ID = "{ServiceId}";
     public const string SUBSCRIPTION_ID = "{SubscriptionId}";
+    public const string LICENCE_ID = "{LicenceId}";
 }
