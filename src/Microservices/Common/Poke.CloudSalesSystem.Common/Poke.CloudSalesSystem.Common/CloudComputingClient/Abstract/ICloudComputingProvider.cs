@@ -16,4 +16,7 @@ public interface ICloudComputingProvider
 
     Task<IResult<ActionResponse>> ExtendLicence(Guid licenceId, Guid accountId, DateTimeOffset until,
         CancellationToken cancellationToken);
+
+    Task<IResult<ActionResponse>> UpdateLicenceQuantity(Guid serviceId, Guid accountId, int newQuantity,
+        CancellationToken cancellationToken);
 }

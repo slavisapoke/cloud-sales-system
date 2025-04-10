@@ -20,7 +20,6 @@
   <ItemGroup>
     <Folder Include="Abstraction\" />
     <Folder Include="Configuration\" />
-    <Folder Include="Handlers\Event\" />
     <Folder Include="Pipeline\" />
   </ItemGroup>
 </Project>

@@ -125,6 +125,25 @@ internal class MockHttpClientBuilder
         return this;
     }
 
+    public MockHttpClientBuilder WithUpdateLicenceQuantity(Guid serviceId, Guid accountId, int newQuantity)
+    {
+        var service = GetAllServices().FirstOrDefault(s => s.Id == serviceId);
+        var endpoint = $"{_serviceUrl}/service/{serviceId}/account/{accountId}/quantity/{newQuantity}";
+
+        if (service is null)
+        {
+            handler.When(endpoint)
+                .Respond(HttpStatusCode.NotFound,
+                    JsonContent.Create($"Service not found with Id {serviceId}"));
+        }
+
+        handler.When(endpoint)
+            .Respond(HttpStatusCode.OK,
+                JsonContent.Create(ActionResponse.Success("Successfully updated quantity of subscription")));
+
+        return this;
+    }
+
     public MockHttpClientBuilder WithExtendLicence(Guid licenceId, Guid accountId, DateTimeOffset until)
     {
         var endpoint = $"{_serviceUrl}/licence/{licenceId}/account/{accountId}/extend-until/{until}";

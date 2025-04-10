@@ -16,11 +16,17 @@ namespace Poke.CloudSalesSystem.Licences.Application.Handlers.Query.GetAccountLi
         {
             var response = new GetAccountLicencesQueryResponse { AccountId = request.AccountId };
 
-            var licences = await dbContext.Licences
-                .Where(l => l.AccountId == request.AccountId)
+            var result = await dbContext.Subscriptions
+                .Include(s => s.Licences)
+                .Where(s => s.AccountId == request.AccountId)
                 .ToListAsync();
 
-            response.Licences.AddRange(mapper.Map<List<Licence>>(licences));
+            response.Subscriptions.AddRange(result is null ? [] : mapper.Map<List<Subscription>>(result));
+
+            List<Licence> licences = result is null ?
+                [] : mapper.Map<List<Licence>>(result.SelectMany(s => s.Licences).ToList());
+
+            response.Licences.AddRange(licences);
 
             return Result.Ok(response);
         }

@@ -91,6 +91,31 @@ public class CloudComputingProvider : ICloudComputingProvider
         return Result.Ok(result!);
     }
 
+    public async Task<IResult<ActionResponse>> UpdateLicenceQuantity(
+        Guid serviceId, Guid accountId, int newQuantity,
+        CancellationToken cancellationToken)
+    {
+        using var client = new MockHttpClientBuilder(_ccConfig.ServiceUrl)
+            .WithUpdateLicenceQuantity(serviceId, accountId, newQuantity)
+            .Build();
+
+        var orderLicencesRequest =
+            await client.GetAsync($"{_ccConfig.ServiceUrl}/service/{serviceId}/account/{accountId}/quantity/{newQuantity}",
+                cancellationToken);
+
+        if (!orderLicencesRequest.IsSuccessStatusCode)
+        {
+            var responseString = await orderLicencesRequest.Content.ReadAsStringAsync();
+            return Result.Fail<ActionResponse>(
+                $"Status code: {orderLicencesRequest.StatusCode}, response content: {responseString}");
+        }
+
+        var result = await orderLicencesRequest.Content
+            .ReadFromJsonAsync<ActionResponse>(cancellationToken);
+
+        return Result.Ok(result!);
+    }
+
     public async Task<IResult<ActionResponse>> ExtendLicence(Guid licenceId, Guid accountId, DateTimeOffset until,
         CancellationToken cancellationToken)
     {

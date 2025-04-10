@@ -6,5 +6,6 @@ namespace Poke.CloudSalesSystem.Licences.Application.Handlers.Query.GetAccountLi
     {
         public Guid AccountId { get; set; }
         public List<Licence> Licences { get; set; } = [];
+        public List<Subscription> Subscriptions { get; set; } = [];
     }
 }
