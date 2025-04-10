@@ -27,7 +27,7 @@ internal class MockHttpClientBuilder
 
     public MockHttpClientBuilder WithOrderLicences(Guid accountId, Guid serviceId, int quantity)
     {
-        var endpoint = $"{_serviceUrl}/services/${serviceId}/account/${accountId}/{quantity}";
+        var endpoint = $"{_serviceUrl}/order/{serviceId}/account/{accountId}/{quantity}";
 
         var service = GetAllServices().
             Where(s => s.Id == serviceId).FirstOrDefault();

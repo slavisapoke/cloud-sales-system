@@ -52,7 +52,7 @@ public class CloudComputingProvider : ICloudComputingProvider
             .Build();
 
         var orderLicencesRequest =
-            await client.GetAsync($"{_ccConfig.ServiceUrl}/services/{serviceId}/account/{accountId}/{quantity}",
+            await client.GetAsync($"{_ccConfig.ServiceUrl}/order/{serviceId}/account/{accountId}/{quantity}",
                 cancellationToken);
 
         if (!orderLicencesRequest.IsSuccessStatusCode)
