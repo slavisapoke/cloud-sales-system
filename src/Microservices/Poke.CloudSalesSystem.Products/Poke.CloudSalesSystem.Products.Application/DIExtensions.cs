@@ -4,6 +4,7 @@ using Poke.CloudSalesSystem.Common.CloudComputingClient;
 using Poke.CloudSalesSystem.Common.CloudComputingClient.Abstract;
 using Poke.CloudSalesSystem.Common.MediatR.Pipeline;
 using Poke.CloudSalesSystem.Products.Application.Adapters;
+using Poke.CloudSalesSystem.Common.Cache.Fusion.Extensions;
 
 namespace Poke.CloudSalesSystem.Products.Application;
 
@@ -14,6 +15,7 @@ public static class DIExtensions
         services.AddAutoMapper(typeof(DIExtensions).Assembly);
 
         services.RegisterProductProvides(configuration);
+        services.RegisterFusionCache(configuration);
 
         services.AddMediatR(configuration =>
         {
