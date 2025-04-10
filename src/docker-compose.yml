@@ -70,6 +70,25 @@ services:
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro   
     depends_on:
       - cache
+      
+  gateway:
+    image: ${DOCKER_REGISTRY-}gateway
+    build:
+      context: .
+      dockerfile: Poke.CloudSalesSystem.Gateway/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - SEQ_SERVER=seq
+      - ServicesConfiguration__CustomerServiceBaseUrl=http://customer-api
+      - ServicesConfiguration__AccountServiceBaseUrl=http://accounts-api
+      - ServicesConfiguration__LicenceServiceBaseUrl=http://licence-api
+      - ServicesConfiguration__ProductServiceBaseUrl=http://product-api
+    ports:
+      - 7000:80    
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro   
 
 ##### LOGGER #####
   seq:

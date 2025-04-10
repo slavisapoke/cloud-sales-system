@@ -47,7 +47,7 @@ namespace Poke.CloudSalesSystem.Licences.API.Controllers
         [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ExtendLicenceCommandResponse))]
         [ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(BadRequestObjectResult))]
         [Produces("application/json")]
-        public async Task<IActionResult> ExtendLicense([FromBody] ExtendLicenceCommand extendCommand, CancellationToken cancellationToken)
+        public async Task<IActionResult> ExtendLicence([FromBody] ExtendLicenceCommand extendCommand, CancellationToken cancellationToken)
         {
             var result = await _sender.Send(extendCommand, cancellationToken);
             return result.IsSuccess ?
@@ -61,7 +61,7 @@ namespace Poke.CloudSalesSystem.Licences.API.Controllers
         [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(OrderLicencesCommandResponse))]
         [ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(BadRequestObjectResult))]
         [Produces("application/json")]
-        public async Task<IActionResult> OrderLicenses([FromBody] OrderLicencesCommand orderCommand, CancellationToken cancellationToken)
+        public async Task<IActionResult> OrderLicences([FromBody] OrderLicencesCommand orderCommand, CancellationToken cancellationToken)
         {
             var result = await _sender.Send(orderCommand, cancellationToken);
             return result.IsSuccess ?
@@ -75,7 +75,7 @@ namespace Poke.CloudSalesSystem.Licences.API.Controllers
         [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(UpdateLicenceQuantityCommandResponse))]
         [ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(BadRequestObjectResult))]
         [Produces("application/json")]
-        public async Task<IActionResult> UpdateLicenseQuantity([FromBody] UpdateLicenceQuantityCommand updateCommand, CancellationToken cancellationToken)
+        public async Task<IActionResult> UpdateLicenceQuantity([FromBody] UpdateLicenceQuantityCommand updateCommand, CancellationToken cancellationToken)
         {
             var result = await _sender.Send(updateCommand, cancellationToken);
             return result.IsSuccess ?

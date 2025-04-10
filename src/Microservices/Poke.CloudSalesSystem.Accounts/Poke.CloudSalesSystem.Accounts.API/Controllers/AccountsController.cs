@@ -27,7 +27,7 @@ namespace Poke.CloudSalesSystem.Accounts.API.Controllers
         [HttpGet]
         [Route("get-by-customer/{customerId:guid}")]
         [OpenApiOperation("Get accounts for customer","Gets all accounts for customer")]
-        [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(Account))]
+        [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(IEnumerable<Account>))]
         [ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(BadRequestObjectResult))]
         [Produces("application/json")]
         public async Task<IActionResult> Get([FromRoute] Guid customerId, CancellationToken cancellationToken)
