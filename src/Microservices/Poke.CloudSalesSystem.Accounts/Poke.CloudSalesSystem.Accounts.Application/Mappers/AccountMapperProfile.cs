@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using Poke.CloudSalesSystem.Accounts.Application.Model;
 using Poke.CloudSalesSystem.Accounts.Domain.Model;
+using Poke.CloudSalesSystem.Common.Contracts.Accounts;
 
 namespace Poke.CloudSalesSystem.Accounts.Application.Mappers;
 

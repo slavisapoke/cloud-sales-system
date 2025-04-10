@@ -2,7 +2,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using NSwag.Annotations;
 using Poke.CloudSalesSystem.Accounts.Application.Handlers.Query.GetCustomers;
-using Poke.CloudSalesSystem.Accounts.Application.Model;
+using Poke.CloudSalesSystem.Common.Contracts.Accounts;
 using Poke.CloudSalesSystem.Common.Helpers;
 using System.Net;
 

@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Poke.CloudSalesSystem.Common.CloudComputingClient.Abstract;
+using Poke.CloudSalesSystem.Common.Contracts.Products;
 using Poke.CloudSalesSystem.Products.Application.Abstract;
-using Poke.CloudSalesSystem.Products.Application.Model;
 
 namespace Poke.CloudSalesSystem.Products.Application.Adapters
 {

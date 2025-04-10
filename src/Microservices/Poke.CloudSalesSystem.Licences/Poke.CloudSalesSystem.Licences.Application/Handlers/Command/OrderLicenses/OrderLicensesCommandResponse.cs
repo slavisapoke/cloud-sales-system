@@ -1,4 +1,5 @@
-﻿using Poke.CloudSalesSystem.Licences.Application.Model;
+﻿
+using Poke.CloudSalesSystem.Common.Contracts.Licences;
 
 namespace Poke.CloudSalesSystem.Licences.Application.Handlers.Command.OrderService;
 

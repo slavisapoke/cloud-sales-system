@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Poke.CloudSalesSystem.Common.CloudComputingClient.Abstract.Model;
-using Poke.CloudSalesSystem.Products.Application.Model;
+using Poke.CloudSalesSystem.Common.Contracts.Products;
 
 namespace Poke.CloudSalesSystem.Products.Application.Mappers;
 

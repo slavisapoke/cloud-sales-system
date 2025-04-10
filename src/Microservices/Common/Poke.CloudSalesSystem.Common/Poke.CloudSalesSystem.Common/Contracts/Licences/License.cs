@@ -1,6 +1,7 @@
-﻿using Poke.CloudSalesSystem.Licences.Domain.Model;
+﻿
+using Poke.CloudSalesSystem.Common.Contracts.Licences.Enums;
 
-namespace Poke.CloudSalesSystem.Licences.Application.Model;
+namespace Poke.CloudSalesSystem.Common.Contracts.Licences;
 
 public class Licence
 {

@@ -1,10 +1,10 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using NSwag.Annotations;
+using Poke.CloudSalesSystem.Common.Contracts.Products;
 using Poke.CloudSalesSystem.Common.Helpers;
 using Poke.CloudSalesSystem.Products.Application.Configuration;
 using Poke.CloudSalesSystem.Products.Application.Handlers.Query.GetCustomers;
-using Poke.CloudSalesSystem.Products.Application.Model;
 using System.Net;
 
 namespace Poke.CloudSalesSystem.Products.API.Controllers

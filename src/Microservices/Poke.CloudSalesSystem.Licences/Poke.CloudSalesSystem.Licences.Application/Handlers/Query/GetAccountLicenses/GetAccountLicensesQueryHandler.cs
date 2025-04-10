@@ -2,7 +2,7 @@
 using FluentResults;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Poke.CloudSalesSystem.Licences.Application.Model;
+using Poke.CloudSalesSystem.Common.Contracts.Licences;
 using Poke.CloudSalesSystem.Licences.Domain.Repository;
 
 namespace Poke.CloudSalesSystem.Licences.Application.Handlers.Query.GetAccountLicences

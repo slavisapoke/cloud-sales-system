@@ -1,6 +1,6 @@
 ﻿using FluentResults;
 using MediatR;
-using Poke.CloudSalesSystem.Accounts.Application.Model;
+using Poke.CloudSalesSystem.Common.Contracts.Accounts;
 
 namespace Poke.CloudSalesSystem.Accounts.Application.Handlers.Query.GetCustomers;
 

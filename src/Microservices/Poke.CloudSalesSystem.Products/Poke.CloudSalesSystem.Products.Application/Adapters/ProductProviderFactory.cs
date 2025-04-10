@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
 using Poke.CloudSalesSystem.Common.CloudComputingClient.Abstract;
+using Poke.CloudSalesSystem.Common.Contracts.Products;
 using Poke.CloudSalesSystem.Common.Helpers;
 using Poke.CloudSalesSystem.Products.Application.Abstract;
 using Poke.CloudSalesSystem.Products.Application.Configuration;
-using Poke.CloudSalesSystem.Products.Application.Model;
 
 namespace Poke.CloudSalesSystem.Products.Application.Adapters
 {

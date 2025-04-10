@@ -1,6 +1,7 @@
-﻿namespace Poke.CloudSalesSystem.Licences.Application.Model;
+﻿
+namespace Poke.CloudSalesSystem.Common.Contracts.Products;
 
-public class Service
+public class Product
 {
     public Guid Id { get; set; }
     public required string Name { get; set; }

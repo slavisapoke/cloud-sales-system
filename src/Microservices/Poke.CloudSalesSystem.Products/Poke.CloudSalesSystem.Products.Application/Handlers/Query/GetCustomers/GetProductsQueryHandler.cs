@@ -1,11 +1,11 @@
 ﻿using FluentResults;
 using MediatR;
 using Poke.CloudSalesSystem.Common.Cache.Fusion.Extensions;
+using Poke.CloudSalesSystem.Common.Contracts.Products;
 using Poke.CloudSalesSystem.Products.Application.Adapters;
 using Poke.CloudSalesSystem.Products.Application.Constants;
 using Poke.CloudSalesSystem.Products.Application.Handlers.Query.GetCustomers;
 using Poke.CloudSalesSystem.Products.Application.Helpers;
-using Poke.CloudSalesSystem.Products.Application.Model;
 using ZiggyCreatures.Caching.Fusion;
 
 namespace Poke.CloudSalesSystem.Products.Application.Handlers.Query.GetCase;
