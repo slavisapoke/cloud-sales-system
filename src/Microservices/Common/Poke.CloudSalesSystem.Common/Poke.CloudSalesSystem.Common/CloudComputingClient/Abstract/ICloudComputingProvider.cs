@@ -1,7 +1,7 @@
 ﻿using FluentResults;
-using Poke.CloudSalesSystem.Licences.Application.Model.CloudComputing;
+using Poke.CloudSalesSystem.Common.CloudComputingClient.Abstract.Model;
 
-namespace Poke.CloudSalesSystem.Licences.Application.Abstraction;
+namespace Poke.CloudSalesSystem.Common.CloudComputingClient.Abstract;
 
 public interface ICloudComputingProvider
 {
@@ -9,5 +9,8 @@ public interface ICloudComputingProvider
         CancellationToken cancellationToken);
 
     Task<IResult<OrderLicencesResponse>> OrderLicences(Guid accountId, Guid serviceId, int quantity, 
+        CancellationToken cancellationToken);
+
+    Task<IResult<CancelSubscriptionResponse>> CancelSubscription(Guid serviceId, Guid accountId,
         CancellationToken cancellationToken);
 }

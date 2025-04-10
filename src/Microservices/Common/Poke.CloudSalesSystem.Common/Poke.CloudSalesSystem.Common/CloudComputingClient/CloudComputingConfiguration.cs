@@ -1,5 +1,5 @@
 ﻿
-namespace Poke.CloudSalesSystem.Licences.Application.Configuration;
+namespace Poke.CloudSalesSystem.Common.CloudComputingClient;
 
 public class CloudComputingConfiguration
 {

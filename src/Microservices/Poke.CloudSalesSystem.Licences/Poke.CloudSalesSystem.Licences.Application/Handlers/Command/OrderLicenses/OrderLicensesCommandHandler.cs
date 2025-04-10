@@ -3,8 +3,9 @@ using FluentResults;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Poke.CloudSalesSystem.Common.CloudComputingClient.Abstract;
+using Poke.CloudSalesSystem.Common.CloudComputingClient.Abstract.Model;
 using Poke.CloudSalesSystem.Common.Constants;
-using Poke.CloudSalesSystem.Licences.Application.Abstraction;
 using Poke.CloudSalesSystem.Licences.Application.Handlers.Command.OrderService;
 using Poke.CloudSalesSystem.Licences.Application.Model;
 using Poke.CloudSalesSystem.Licences.Application.Model.Wrapper;
@@ -43,7 +44,7 @@ public class OrderLicencesCommandHandler(
 
         var response = ccResult.Value;
 
-        if (response.Status == Model.CloudComputing.OrderStatus.OrderFailed)
+        if (response.Status == OrderStatus.OrderFailed)
         {
             logger.LogError($"For {LogPlaceholders.ORDER} service provider responded with {response.Status}. Error: {LogPlaceholders.ERROR}", request, error);
             return Result.Fail<OrderLicencesCommandResponse>(response.Reason);
@@ -52,7 +53,7 @@ public class OrderLicencesCommandHandler(
         var dbLicences = mapper.Map<IEnumerable<LicenceEntity>>(ccResult.Value.Licences);
         
         var subscription = dbContext.Subscriptions.FirstOrDefault(s => s.ExternalSubscriptionId == response.SubscriptionId);
-        var newSubscription = response.Status == Model.CloudComputing.OrderStatus.NewSubscription;
+        var newSubscription = response.Status == OrderStatus.NewSubscription;
 
         if (newSubscription && subscription != null)
         {
@@ -82,14 +83,7 @@ public class OrderLicencesCommandHandler(
 
         dbContext.Licences.AddRange(dbLicences);
 
-        try
-        {
-            await dbContext.SaveChangesAsync(cancellationToken);
-        }
-        catch (Exception ex)
-        {
-            return Result.Fail<OrderLicencesCommandResponse>(ex.Message);
-        }
+        await dbContext.SaveChangesAsync(cancellationToken);
         //Send message to event bus for further processing
 
         var result = new OrderLicencesCommandResponse(request.AccountId,

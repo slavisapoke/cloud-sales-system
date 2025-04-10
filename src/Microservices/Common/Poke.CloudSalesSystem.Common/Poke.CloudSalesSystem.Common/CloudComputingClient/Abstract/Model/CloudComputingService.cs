@@ -1,4 +1,4 @@
-﻿namespace Poke.CloudSalesSystem.Licences.Application.Model.CloudComputing;
+﻿namespace Poke.CloudSalesSystem.Common.CloudComputingClient.Abstract.Model;
 
 public class CloudComputingService
 {

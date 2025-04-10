@@ -3,9 +3,9 @@ using Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Poke.CloudSalesSystem.Licences.Application.Abstraction;
+using Poke.CloudSalesSystem.Common.CloudComputingClient;
+using Poke.CloudSalesSystem.Common.CloudComputingClient.Abstract;
 using Poke.CloudSalesSystem.Licences.Domain.Repository;
-using Poke.CloudSalesSystem.Licences.Infrastructure.ExternalServices.CCP;
 
 namespace Poke.CloudSalesSystem.Licences.Infrastructure;
 

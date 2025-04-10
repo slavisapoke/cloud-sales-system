@@ -1,6 +1,6 @@
 using NSwag;
+using Poke.CloudSalesSystem.Common.CloudComputingClient;
 using Poke.CloudSalesSystem.Licences.API.Extensions;
-using Poke.CloudSalesSystem.Licences.Application.Configuration;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);

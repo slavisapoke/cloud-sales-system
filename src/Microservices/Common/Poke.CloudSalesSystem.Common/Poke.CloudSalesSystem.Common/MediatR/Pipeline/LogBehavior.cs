@@ -25,7 +25,7 @@ namespace Poke.CloudSalesSystem.Common.MediatR.Pipeline
 
             try
             {
-                _logger.LogInformation($"Executing {requestType} {LogPlaceholders.REQUEST_DATA}", request);
+                _logger.LogInformation($"Executing {requestType} {LogPlaceholders.REQUEST}", request);
 
                 var result = await next();
 

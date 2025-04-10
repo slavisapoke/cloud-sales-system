@@ -18,6 +18,8 @@
     <ProjectReference Include="..\Poke.CloudSalesSystem.Licences.Domain\Poke.CloudSalesSystem.Licences.Domain.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Abstraction\" />
+    <Folder Include="Configuration\" />
     <Folder Include="Handlers\Event\" />
     <Folder Include="Pipeline\" />
   </ItemGroup>
