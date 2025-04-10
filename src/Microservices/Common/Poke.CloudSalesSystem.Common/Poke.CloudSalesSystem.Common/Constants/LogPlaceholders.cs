@@ -7,4 +7,6 @@ public static class LogPlaceholders
 {
     public const string REQUEST_DATA = "{@RequestData}";
     public const string MESSAGE = "{@Message}";
+    public const string ORDER = "{@LicenceOrder}";
+    public const string ERROR = "{@Error}";
 }

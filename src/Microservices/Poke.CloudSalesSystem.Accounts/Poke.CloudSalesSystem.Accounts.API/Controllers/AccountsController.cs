@@ -25,7 +25,7 @@ namespace Poke.CloudSalesSystem.Accounts.API.Controllers
         }
 
         [HttpGet]
-        [Route("/{customerId:guid}")]
+        [Route("get-by-customer/{customerId:guid}")]
         [OpenApiOperation("Get accounts for customer","Gets all accounts for customer")]
         [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(Account))]
         [ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(BadRequestObjectResult))]

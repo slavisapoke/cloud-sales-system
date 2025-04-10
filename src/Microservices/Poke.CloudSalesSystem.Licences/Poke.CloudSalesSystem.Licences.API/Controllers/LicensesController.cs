@@ -84,7 +84,7 @@ namespace Poke.CloudSalesSystem.Licences.API.Controllers
         }
 
         [HttpGet]
-        [Route("/{accountId:guid}")]
+        [Route("{accountId:guid}")]
         [OpenApiOperation("Get account's licences info", "Gets all licences for the given account")]
         [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(GetAccountLicencesQueryResponse))]
         [ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(BadRequestObjectResult))]

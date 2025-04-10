@@ -18,6 +18,7 @@
     <ProjectReference Include="..\Poke.CloudSalesSystem.Licences.Domain\Poke.CloudSalesSystem.Licences.Domain.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Handlers\Event\" />
     <Folder Include="Pipeline\" />
   </ItemGroup>
 </Project>

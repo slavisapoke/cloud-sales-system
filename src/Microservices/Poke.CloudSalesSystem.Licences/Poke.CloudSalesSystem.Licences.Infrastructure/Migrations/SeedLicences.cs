@@ -76,13 +76,13 @@ public sealed class SeedLicences
     {
         var entities = new List<LicenceEntity>();
 
-        entities.AddRange(Enumerable.Range(0, 5).Select(ind =>
+        entities.AddRange(Enumerable.Range(0, 3).Select(ind =>
             Create(Guid.Parse(internalIds[ind]), Guid.Parse(externalIds[ind]), SeedSubscriptions.Account1_Id, SeedSubscriptions.ExternalSub1_id, SeedSubscriptions.Subscription1_Id)));
         
-        entities.AddRange(Enumerable.Range(5, 10).Select(ind =>
+        entities.AddRange(Enumerable.Range(3, 5).Select(ind =>
             Create(Guid.Parse(internalIds[ind]), Guid.Parse(externalIds[ind]), SeedSubscriptions.Account1_Id, SeedSubscriptions.ExternalSub2_id, SeedSubscriptions.Subscription2_Id)));
         
-        entities.AddRange(Enumerable.Range(15, 15).Select(ind =>
+        entities.AddRange(Enumerable.Range(8, 5).Select(ind =>
             Create(Guid.Parse(internalIds[ind]), Guid.Parse(externalIds[ind]), SeedSubscriptions.Account2_Id, SeedSubscriptions.ExternalSub3_id, SeedSubscriptions.Subscription3_Id)));
 
         builder.Entity<LicenceEntity>()

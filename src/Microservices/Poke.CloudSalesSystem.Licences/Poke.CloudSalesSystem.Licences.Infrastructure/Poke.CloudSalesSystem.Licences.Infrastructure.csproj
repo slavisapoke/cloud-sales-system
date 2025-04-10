@@ -17,10 +17,12 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.11" />
+    <PackageReference Include="RichardSzalay.MockHttp" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Poke.CloudSalesSystem.Common\Poke.CloudSalesSystem.Common\Poke.CloudSalesSystem.Common.csproj" />
+    <ProjectReference Include="..\Poke.CloudSalesSystem.Licences.Application\Poke.CloudSalesSystem.Licences.Application.csproj" />
     <ProjectReference Include="..\Poke.CloudSalesSystem.Licences.Domain\Poke.CloudSalesSystem.Licences.Domain.csproj" />
   </ItemGroup>
 

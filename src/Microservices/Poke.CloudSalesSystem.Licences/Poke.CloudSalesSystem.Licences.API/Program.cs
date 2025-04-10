@@ -1,5 +1,6 @@
 using NSwag;
 using Poke.CloudSalesSystem.Licences.API.Extensions;
+using Poke.CloudSalesSystem.Licences.Application.Configuration;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +17,9 @@ builder.Logging.AddSerilog();
 
 Log.Information("Starting Licence API...");
 
+builder.Services.Configure<CloudComputingConfiguration>(
+    builder.Configuration.GetSection(nameof(CloudComputingConfiguration)));
+
 builder.Services.RegisterServices(builder.Configuration);
 
 builder.Host.UseSerilog();
@@ -24,7 +28,6 @@ builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
 
 builder.Services.AddSwaggerDocument(settings =>
 {
