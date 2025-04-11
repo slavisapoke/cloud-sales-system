@@ -24,19 +24,17 @@ public static class AppServiceExtensions
         return services;
     }
 
-
     public static IServiceCollection RegisterHttpClients(this IServiceCollection services)
     {
+        services.AddTransient<AuthorizationForwarderMiddleware>();
+
         services.AddHttpClient(HttpNamedClient.CUSTOMER_SERVICE, (services, client) =>
             {
                 using var scope = services.CreateScope();
                 var downstreamConfig = scope.ServiceProvider.GetRequiredService<ServicesConfiguration>();
-                var userProvider = scope.ServiceProvider.GetRequiredService<ICurrentUserProvider>();
-                var userContext = userProvider.GetCurrentUser();
 
                 client.BaseAddress = new Uri(downstreamConfig.CustomerServiceBaseUrl);
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
-                client.DefaultRequestHeaders.Add("KIND_OF_AUTHORIZATION", userContext.CustomerId.ToString());
             })
             .AddHttpMessageHandler<AuthorizationForwarderMiddleware>()
             .AddPolicyHandler(GetRetryPolicy());
@@ -45,12 +43,9 @@ public static class AppServiceExtensions
             {
                 using var scope = services.CreateScope();
                 var downstreamConfig = scope.ServiceProvider.GetRequiredService<ServicesConfiguration>();
-                var userProvider = scope.ServiceProvider.GetRequiredService<ICurrentUserProvider>();
-                var userContext = userProvider.GetCurrentUser();
 
                 client.BaseAddress = new Uri(downstreamConfig.ProductServiceBaseUrl);
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
-                client.DefaultRequestHeaders.Add("KIND_OF_AUTHORIZATION", userContext.CustomerId.ToString());
             })
             .AddHttpMessageHandler<AuthorizationForwarderMiddleware>()
             .AddPolicyHandler(GetRetryPolicy());
@@ -59,12 +54,9 @@ public static class AppServiceExtensions
             {
                 using var scope = services.CreateScope();
                 var downstreamConfig = scope.ServiceProvider.GetRequiredService<ServicesConfiguration>();
-                var userProvider = scope.ServiceProvider.GetRequiredService<ICurrentUserProvider>();
-                var userContext = userProvider.GetCurrentUser();
 
                 client.BaseAddress = new Uri(downstreamConfig.AccountServiceBaseUrl);
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
-                client.DefaultRequestHeaders.Add("KIND_OF_AUTHORIZATION", userContext.CustomerId.ToString());
             })
             .AddHttpMessageHandler<AuthorizationForwarderMiddleware>()
             .AddPolicyHandler(GetRetryPolicy());
@@ -73,12 +65,9 @@ public static class AppServiceExtensions
             {
                 using var scope = services.CreateScope();
                 var downstreamConfig = scope.ServiceProvider.GetRequiredService<ServicesConfiguration>();
-                var userProvider = scope.ServiceProvider.GetRequiredService<ICurrentUserProvider>();
-                var userContext = userProvider.GetCurrentUser();
 
                 client.BaseAddress = new Uri(downstreamConfig.LicenceServiceBaseUrl);
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
-                client.DefaultRequestHeaders.Add("KIND_OF_AUTHORIZATION", userContext.CustomerId.ToString());
             })
             .AddHttpMessageHandler<AuthorizationForwarderMiddleware>()
             .AddPolicyHandler(GetRetryPolicy()); 

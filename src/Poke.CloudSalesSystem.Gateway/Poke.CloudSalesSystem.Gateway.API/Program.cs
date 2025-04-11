@@ -1,5 +1,3 @@
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using Microsoft.Extensions.Diagnostics.HealthChecks;
 using NSwag;
 using Poke.CloudSalesSystem.Common.HealthCheck;
 using Poke.CloudSalesSystem.Common.Helpers;
@@ -57,6 +55,16 @@ builder.Services.AddSwaggerDocument(settings =>
         };
     };
 });
+
+builder.Services.AddHealthChecks()
+    .AddUrlGroup(new Uri($"{servicesConfig!.ProductServiceBaseUrl}/readiness"), 
+        name: "Product API", timeout: TimeSpan.FromSeconds(3))
+    .AddUrlGroup(new Uri($"{servicesConfig!.LicenceServiceBaseUrl}/readiness"), 
+        name: "Licence API", timeout: TimeSpan.FromSeconds(3))
+    .AddUrlGroup(new Uri($"{servicesConfig!.AccountServiceBaseUrl}/readiness"), 
+        name: "Account API", timeout: TimeSpan.FromSeconds(3))
+    .AddUrlGroup(new Uri($"{servicesConfig!.CustomerServiceBaseUrl}/readiness"), 
+        name: "Customer API", timeout: TimeSpan.FromSeconds(3)); 
 
 builder.Services.ConfigureHealthCheckPublisher();
 

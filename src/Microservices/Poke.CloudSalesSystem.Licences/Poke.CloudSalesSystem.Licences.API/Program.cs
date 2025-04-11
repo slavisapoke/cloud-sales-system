@@ -1,5 +1,6 @@
 using NSwag;
 using Poke.CloudSalesSystem.Common.CloudComputingClient;
+using Poke.CloudSalesSystem.Common.HealthCheck;
 using Poke.CloudSalesSystem.Licences.API.Extensions;
 using Serilog;
 using System.Text.Json.Serialization;
@@ -48,6 +49,9 @@ builder.Services.AddSwaggerDocument(settings =>
     };
 });
 
+builder.Services.AddHealthChecks();
+builder.Services.ConfigureHealthCheckPublisher();
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -59,6 +63,9 @@ if (app.Environment.IsDevelopment())
 app.StartMigration();
 
 app.UseAuthorization();
+
+app.MapHealthChecks("/liveness", HealthCheckOptionsHelper.GetHealthCheckOptions(_ => false));
+app.MapHealthChecks("/readiness", HealthCheckOptionsHelper.GetHealthCheckOptions());
 
 app.UseSerilogRequestLogging();
 

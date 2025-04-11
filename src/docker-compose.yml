@@ -156,6 +156,7 @@ services:
 
 volumes:
   redis-data:
+  rabbitmq_data:
   postgres-customer-data:
   postgres-accounts-data:
   postgres-licences-data:

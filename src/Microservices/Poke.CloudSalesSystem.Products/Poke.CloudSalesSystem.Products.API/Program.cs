@@ -61,6 +61,7 @@ builder.Services.AddSwaggerDocument(settings =>
     };
 });
 
+builder.Services.AddHealthChecks();
 builder.Services.ConfigureHealthCheckPublisher();
 
 var app = builder.Build();
