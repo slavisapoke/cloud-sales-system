@@ -4,6 +4,7 @@ public class ApiResponse<T>
 {
     public T? Value { get; set; }
     public bool IsSuccess { get; set; }
+    public int ErrorCode { get; set; }
     public IReadOnlyCollection<string> Errors { get; set; } = [];
 
     public static ApiResponse<T> Success(T value) =>

@@ -16,7 +16,4 @@
     <ProjectReference Include="..\..\Microservices\Common\Poke.CloudSalesSystem.Contracts.Events\Poke.CloudSalesSystem.Contracts.Events\Poke.CloudSalesSystem.Contracts.Events.csproj" />
     <ProjectReference Include="..\Poke.CloudSalesSystem.Gateway.Domain\Poke.CloudSalesSystem.Gateway.Domain.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Exceptions\" />
-  </ItemGroup>
 </Project>

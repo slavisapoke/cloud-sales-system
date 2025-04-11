@@ -1,9 +1,11 @@
-using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using NSwag;
+using Poke.CloudSalesSystem.Common.HealthCheck;
 using Poke.CloudSalesSystem.Common.Helpers;
 using Poke.CloudSalesSystem.Gateway.API.Extensions;
+using Poke.CloudSalesSystem.Gateway.API.Middleware;
 using Poke.CloudSalesSystem.Gateway.Application.Configuration;
-using Poke.CloudSalesSystem.Gateway.Application.Constants;
 using Serilog;
 using System.Text.Json.Serialization;
 
@@ -41,8 +43,6 @@ builder.Services.AddControllers().AddJsonOptions(options =>
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-
 builder.Services.AddSwaggerDocument(settings =>
 {
     settings.Title = "Cloud Sales System Gateway API";
@@ -58,7 +58,11 @@ builder.Services.AddSwaggerDocument(settings =>
     };
 });
 
+builder.Services.ConfigureHealthCheckPublisher();
+
 var app = builder.Build();
+
+app.UseMiddleware<ExceptionMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -69,8 +73,13 @@ if (app.Environment.IsDevelopment())
 
 app.UseAuthorization();
 
+app.MapHealthChecks("/liveness", HealthCheckOptionsHelper.GetHealthCheckOptions(_ => false));
+app.MapHealthChecks("/readiness", HealthCheckOptionsHelper.GetHealthCheckOptions());
+
 app.UseSerilogRequestLogging();
 
 app.MapControllers();
 
 app.Run();
+
+

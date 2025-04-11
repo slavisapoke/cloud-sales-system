@@ -134,6 +134,18 @@ services:
     volumes:
       - postgres-licences-data:/var/lib/postgresql/data 
 
+##### MESSAGE BROKER #####
+  rabbitmq:
+    image: "rabbitmq:management"  # Official RabbitMQ image with the management plugin enabled
+    ports:
+      - 5672:5672  # app connection port
+      - 15672:15672   # management interface
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest 
+      - RABBITMQ_DEFAULT_PASS=guest 
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq  # Mount a Docker volume for RabbitMQ data
+
 ##### DISTRIBUTED CACHE #####
   cache:
     image: "redis:alpine"

@@ -2,6 +2,7 @@
 using MediatR;
 using Poke.CloudSalesSystem.Common.Cache.Fusion.Extensions;
 using Poke.CloudSalesSystem.Common.Contracts.Products;
+using Poke.CloudSalesSystem.Products.Application.Abstract;
 using Poke.CloudSalesSystem.Products.Application.Adapters;
 using Poke.CloudSalesSystem.Products.Application.Constants;
 using Poke.CloudSalesSystem.Products.Application.Handlers.Query.GetCustomers;
@@ -26,7 +27,9 @@ public class GetProductsQueryHandler(
 
     private async Task<IReadOnlyCollection<Product>> ActualGetProducts(Guid providerId, CancellationToken cancellationToken)
     {
-        var provider = providerFactory.GetProvider(providerId);
+        IProductsProvider provider;
+            
+        provider = providerFactory.GetProvider(providerId);
 
         return await provider.GetAllProducts(cancellationToken);
     }

@@ -10,6 +10,7 @@ public static class LogPlaceholders
     public const string MESSAGE = "{@Message}";
     public const string ORDER = "{@LicenceOrder}";
     public const string ERROR = "{@Error}";
+    public const string REPORT = "{@Report}";
 
     public const string ACCOUNT_ID = "{AccountId}";
     public const string SERVICE_ID = "{ServiceId}";
