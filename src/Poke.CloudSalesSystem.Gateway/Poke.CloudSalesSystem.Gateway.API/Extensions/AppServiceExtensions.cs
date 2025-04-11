@@ -1,11 +1,11 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Poke.CloudSalesSystem.Common.Contracts.Licences;
-using Poke.CloudSalesSystem.Gateway.API.Authorization;
+﻿using Poke.CloudSalesSystem.Gateway.API.Authorization;
 using Poke.CloudSalesSystem.Gateway.Application;
 using Poke.CloudSalesSystem.Gateway.Application.Abstract.Services;
 using Poke.CloudSalesSystem.Gateway.Application.Configuration;
 using Poke.CloudSalesSystem.Gateway.Application.Constants;
 using Poke.CloudSalesSystem.Gateway.Infrastructure;
+using Polly;
+using Polly.Extensions.Http;
 
 namespace Poke.CloudSalesSystem.Gateway.API.Extensions;
 
@@ -28,14 +28,16 @@ public static class AppServiceExtensions
     {
         services.AddHttpClient(HttpNamedClient.CUSTOMER_SERVICE, (services, client) =>
         {
-            var downstreamConfig = services.GetRequiredService<ServicesConfiguration>();
-            var userProvider = services.GetRequiredService<ICurrentUserProvider>();
+            using var scope = services.CreateScope();
+            var downstreamConfig = scope.ServiceProvider.GetRequiredService<ServicesConfiguration>();
+            var userProvider = scope.ServiceProvider.GetRequiredService<ICurrentUserProvider>();
             var userContext = userProvider.GetCurrentUser();
 
             client.BaseAddress = new Uri(downstreamConfig.CustomerServiceBaseUrl);
             client.DefaultRequestHeaders.Add("Accept", "application/json");
             client.DefaultRequestHeaders.Add("KIND_OF_AUTHORIZATION", userContext.CustomerId.ToString());
-        });
+        })
+         .AddPolicyHandler(GetRetryPolicy());
 
         services.AddHttpClient(HttpNamedClient.PRODUCT_SERVICE, (services, client) =>
         {
@@ -47,8 +49,9 @@ public static class AppServiceExtensions
             client.BaseAddress = new Uri(downstreamConfig.ProductServiceBaseUrl);
             client.DefaultRequestHeaders.Add("Accept", "application/json");
             client.DefaultRequestHeaders.Add("KIND_OF_AUTHORIZATION", userContext.CustomerId.ToString());
-        }); 
-        
+        })
+         .AddPolicyHandler(GetRetryPolicy());
+
         services.AddHttpClient(HttpNamedClient.ACCOUNT_SERVICE, (services, client) =>
         {
             using var scope = services.CreateScope();
@@ -59,7 +62,8 @@ public static class AppServiceExtensions
             client.BaseAddress = new Uri(downstreamConfig.AccountServiceBaseUrl);
             client.DefaultRequestHeaders.Add("Accept", "application/json");
             client.DefaultRequestHeaders.Add("KIND_OF_AUTHORIZATION", userContext.CustomerId.ToString());
-        });
+        })
+         .AddPolicyHandler(GetRetryPolicy());
 
         services.AddHttpClient(HttpNamedClient.LICENCE_SERVICE, (services, client) =>
         {
@@ -71,8 +75,23 @@ public static class AppServiceExtensions
             client.BaseAddress = new Uri(downstreamConfig.LicenceServiceBaseUrl);
             client.DefaultRequestHeaders.Add("Accept", "application/json");
             client.DefaultRequestHeaders.Add("KIND_OF_AUTHORIZATION", userContext.CustomerId.ToString());
-        });
+        })
+         .AddPolicyHandler(GetRetryPolicy()); 
 
         return services;
     }
+
+    static IAsyncPolicy<HttpResponseMessage> GetRetryPolicy()
+    {
+        return HttpPolicyExtensions
+            .HandleTransientHttpError()
+            .WaitAndRetryAsync(
+                retryCount: 3,
+                sleepDurationProvider: attempt => TimeSpan.FromSeconds(Math.Pow(1, attempt)), // Exponential backoff
+                onRetry: (outcome, timespan, retryAttempt, context) =>
+                {
+                    Console.WriteLine($"Retrying... attempt {retryAttempt}");
+                });
+    }
+
 }

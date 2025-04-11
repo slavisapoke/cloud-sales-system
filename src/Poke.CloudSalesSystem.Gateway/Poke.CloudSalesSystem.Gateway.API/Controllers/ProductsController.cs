@@ -20,7 +20,7 @@ public class ProductsController : ControllerBase
         IProductService productService,
         ILogger<ProductsController> logger)
     {
-        _productService = Preconditions.CheckNotNull(_productService, nameof(_productService));
+        _productService = Preconditions.CheckNotNull(productService, nameof(productService));
         _logger = Preconditions.CheckNotNull(logger, nameof(logger));
     }
 
@@ -38,7 +38,8 @@ public class ProductsController : ControllerBase
     }
 
     [HttpGet]
-    [OpenApiOperation("Cloud Computing Provider products", "Gets all products from Cloud Computing Provider")]
+    [Route("{providerId:guid}")]
+    [OpenApiOperation("Products for the given provider", "Gets all products for a given provider")]
     [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(IReadOnlyCollection<Product>))]
     [ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(BadRequestObjectResult))]
     [Produces("application/json")]

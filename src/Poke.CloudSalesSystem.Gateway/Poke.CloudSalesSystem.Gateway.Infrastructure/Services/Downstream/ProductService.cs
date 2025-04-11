@@ -1,17 +1,22 @@
 ﻿using Poke.CloudSalesSystem.Common.Contracts.Products;
-using Poke.CloudSalesSystem.Gateway.Application.Abstract.Services;
 
 namespace Poke.CloudSalesSystem.Gateway.Infrastructure.Services.Downstream;
 
-public class ProductService : IProductService
+public class ProductService (IHttpClientFactory httpFactory) : IProductService
 {
-    public Task<IReadOnlyCollection<Product>> GetProducts(Guid providerId, CancellationToken cancellationToken)
+    public async Task<IReadOnlyCollection<Product>?> GetProducts(
+        Guid providerId, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var client = httpFactory.CreateClient(HttpNamedClient.PRODUCT_SERVICE);
+
+        return await client.GetAsyncThrowable<IReadOnlyCollection<Product>>(
+            $"products/{providerId}", cancellationToken);
     }
 
-    public Task<Dictionary<string, string>> GetProviders(CancellationToken cancellationToken)
+    public async Task<Dictionary<string, string>?> GetProviders(CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var client = httpFactory.CreateClient(HttpNamedClient.PRODUCT_SERVICE);
+
+        return await client.GetAsyncThrowable<Dictionary<string, string>>($"providers", cancellationToken);
     }
 }

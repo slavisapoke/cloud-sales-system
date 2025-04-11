@@ -1,12 +1,13 @@
 ﻿using Poke.CloudSalesSystem.Common.Contracts.Customers;
-using Poke.CloudSalesSystem.Gateway.Application.Abstract.Services;
 
 namespace Poke.CloudSalesSystem.Gateway.Infrastructure.Services.Downstream;
 
-public class CustomerService : ICustomerService
+public class CustomerService(IHttpClientFactory httpFactory) : ICustomerService
 {
-    public Task<IReadOnlyCollection<Customer>> GetAll(CancellationToken cancellationToken)
+    public async Task<IReadOnlyCollection<Customer>?> GetAll(CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var client = httpFactory.CreateClient(HttpNamedClient.CUSTOMER_SERVICE);
+
+        return await client.GetAsyncThrowable<IReadOnlyCollection<Customer>>($"customers", cancellationToken);
     }
 }

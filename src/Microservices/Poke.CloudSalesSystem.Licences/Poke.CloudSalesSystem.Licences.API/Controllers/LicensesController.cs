@@ -1,6 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using NSwag.Annotations;
+using Poke.CloudSalesSystem.Common.Contracts;
 using Poke.CloudSalesSystem.Common.Helpers;
 using Poke.CloudSalesSystem.Licences.Application.Handlers.Command.CancelSubscription;
 using Poke.CloudSalesSystem.Licences.Application.Handlers.Command.ExtendLicence;
@@ -30,71 +31,71 @@ namespace Poke.CloudSalesSystem.Licences.API.Controllers
         [HttpPost]
         [Route("subscription/cancel")]
         [OpenApiOperation("Cancel subscription", "Cancels subscription - cancels all related licences")]
-        [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(CancelSubscriptionCommandResponse))]
+        [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<CancelSubscriptionCommandResponse>))]
         [ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(BadRequestObjectResult))]
         [Produces("application/json")]
         public async Task<IActionResult> CancelSubscription([FromBody] CancelSubscriptionCommand cancelCommand, CancellationToken cancellationToken)
         {
             var result = await _sender.Send(cancelCommand, cancellationToken);
-            return result.IsSuccess ?
-                Ok(result.Value) :
-                BadRequest(result.Errors);
+            return Ok(result.IsSuccess ?
+                ApiResponse<CancelSubscriptionCommandResponse>.Success(result.Value) :
+                ApiResponse<CancelSubscriptionCommandResponse>.Fail(result.Errors.Select(e => e.Message).ToList()));
         }
 
         [HttpPost]
         [Route("extend")]
         [OpenApiOperation("Extend licence", "Extends licence validity")]
-        [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ExtendLicenceCommandResponse))]
+        [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<ExtendLicenceCommandResponse>))]
         [ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(BadRequestObjectResult))]
         [Produces("application/json")]
         public async Task<IActionResult> ExtendLicence([FromBody] ExtendLicenceCommand extendCommand, CancellationToken cancellationToken)
         {
             var result = await _sender.Send(extendCommand, cancellationToken);
-            return result.IsSuccess ?
-                Ok(result.Value) :
-                BadRequest(result.Errors);
+            return Ok(result.IsSuccess ?
+                ApiResponse<ExtendLicenceCommandResponse>.Success(result.Value) :
+                ApiResponse<ExtendLicenceCommandResponse>.Fail(result.Errors.Select(e => e.Message).ToList()));
         }
 
         [HttpPost]
         [Route("order")]
         [OpenApiOperation("Order service licences", "Orders service licences")]
-        [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(OrderLicencesCommandResponse))]
+        [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<OrderLicencesCommandResponse>))]
         [ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(BadRequestObjectResult))]
         [Produces("application/json")]
         public async Task<IActionResult> OrderLicences([FromBody] OrderLicencesCommand orderCommand, CancellationToken cancellationToken)
         {
             var result = await _sender.Send(orderCommand, cancellationToken);
-            return result.IsSuccess ?
-                Ok(result.Value) :
-                BadRequest(result.Errors);
+            return Ok(result.IsSuccess ?
+                ApiResponse<OrderLicencesCommandResponse>.Success(result.Value) :
+                ApiResponse<OrderLicencesCommandResponse>.Fail(result.Errors.Select(e => e.Message).ToList()));
         }
 
         [HttpPost]
         [Route("subscription/update")]
         [OpenApiOperation("Update subscription quantity", "Updates subscription quanity")]
-        [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(UpdateLicenceQuantityCommandResponse))]
+        [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<UpdateLicenceQuantityCommandResponse>))]
         [ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(BadRequestObjectResult))]
         [Produces("application/json")]
         public async Task<IActionResult> UpdateLicenceQuantity([FromBody] UpdateLicenceQuantityCommand updateCommand, CancellationToken cancellationToken)
         {
             var result = await _sender.Send(updateCommand, cancellationToken);
-            return result.IsSuccess ?
-                Ok(result.Value) :
-                BadRequest(result.Errors);
+            return Ok(result.IsSuccess ?
+                ApiResponse<UpdateLicenceQuantityCommandResponse>.Success(result.Value) :
+                ApiResponse<UpdateLicenceQuantityCommandResponse>.Fail(result.Errors.Select(e => e.Message).ToList()));
         }
 
         [HttpGet]
         [Route("{accountId:guid}")]
         [OpenApiOperation("Get account's licences info", "Gets all licences for the given account")]
-        [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(GetAccountLicencesQueryResponse))]
+        [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<GetAccountLicencesQueryResponse>))]
         [ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(BadRequestObjectResult))]
         [Produces("application/json")]
         public async Task<IActionResult> Get([FromRoute] Guid accountId, CancellationToken cancellationToken)
         {
             var result = await _sender.Send(new GetAccountLicencesQuery(accountId), cancellationToken);
-            return result.IsSuccess ?
-                Ok(result.Value) :
-                BadRequest(result.Errors);
+            return Ok(result.IsSuccess ?
+                ApiResponse<GetAccountLicencesQueryResponse>.Success(result.Value) :
+                ApiResponse<GetAccountLicencesQueryResponse>.Fail(result.Errors.Select(e => e.Message).ToList()));
         }
     }
 }

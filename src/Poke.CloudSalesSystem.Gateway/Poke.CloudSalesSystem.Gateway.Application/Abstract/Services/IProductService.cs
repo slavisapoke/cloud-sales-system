@@ -4,6 +4,6 @@ namespace Poke.CloudSalesSystem.Gateway.Application.Abstract.Services;
 
 public interface IProductService
 {
-    Task<Dictionary<string, string>> GetProviders(CancellationToken cancellationToken);
-    Task<IReadOnlyCollection<Product>> GetProducts(Guid providerId, CancellationToken cancellationToken);
+    Task<Dictionary<string, string>?> GetProviders(CancellationToken cancellationToken);
+    Task<IReadOnlyCollection<Product>?> GetProducts(Guid providerId, CancellationToken cancellationToken);
 }

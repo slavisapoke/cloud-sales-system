@@ -1,5 +1,4 @@
 ﻿using Infrastructure.Services;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Poke.CloudSalesSystem.Gateway.Application.Abstract.Services;
@@ -18,7 +17,7 @@ public static class DIExtensions
         services.AddTransient<ICustomerService, CustomerService>();
         services.AddTransient<IAccountService, AccountService>();
         services.AddTransient<IProductService, ProductService>();
-        services.AddTransient<ILicenceService, LicenceService>();
+        services.AddTransient<ILicenceService, LicencesService>();
         
         return services;
     }

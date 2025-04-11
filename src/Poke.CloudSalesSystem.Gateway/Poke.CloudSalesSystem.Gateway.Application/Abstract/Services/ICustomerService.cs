@@ -4,5 +4,5 @@ namespace Poke.CloudSalesSystem.Gateway.Application.Abstract.Services;
 
 public interface ICustomerService
 {
-    Task<IReadOnlyCollection<Customer>> GetAll(CancellationToken cancellationToken);
+    Task<IReadOnlyCollection<Customer>?> GetAll(CancellationToken cancellationToken);
 }
