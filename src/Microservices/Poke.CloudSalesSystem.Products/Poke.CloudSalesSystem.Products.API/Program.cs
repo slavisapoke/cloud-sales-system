@@ -1,4 +1,5 @@
 using NSwag;
+using Poke.CloudSalesSystem.Common.Cache.Redis;
 using Poke.CloudSalesSystem.Common.CloudComputingClient;
 using Poke.CloudSalesSystem.Common.HealthCheck;
 using Poke.CloudSalesSystem.Common.Helpers;
@@ -61,7 +62,13 @@ builder.Services.AddSwaggerDocument(settings =>
     };
 });
 
-builder.Services.AddHealthChecks();
+var redisConfig = Preconditions.CheckNotNull(
+    builder.Configuration.GetSection(nameof(RedisConfiguration)).Get<RedisConfiguration>(),
+    nameof(RedisConfiguration));
+
+builder.Services.AddHealthChecks()
+    .AddCacheHealthCheck(redisConfig);
+
 builder.Services.ConfigureHealthCheckPublisher();
 
 var app = builder.Build();

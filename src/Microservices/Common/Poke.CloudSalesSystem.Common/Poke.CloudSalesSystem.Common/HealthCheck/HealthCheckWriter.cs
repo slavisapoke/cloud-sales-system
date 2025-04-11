@@ -10,6 +10,24 @@ public sealed class HealthCheckWriter
     {
         context.Response.ContentType = "application/json";
 
+        var statusAggregate = report.Status;
+
+        if (report.Status != HealthStatus.Healthy)
+        {
+            var unhealthyCount = report.Entries.Count(s => s.Value.Status == HealthStatus.Unhealthy);
+            var degradedCount = report.Entries.Count(s => s.Value.Status == HealthStatus.Degraded);
+            var total = report.Entries.Count();
+
+            if(degradedCount / (float)total >= .25)
+            { 
+                statusAggregate = HealthStatus.Degraded;
+            }
+            if(unhealthyCount / (float)total  > .25)
+            {
+                statusAggregate = HealthStatus.Unhealthy;
+            }
+        }
+        
         var healthCheckResult = new
         {
             status = report.Status.ToString(),
