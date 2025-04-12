@@ -47,7 +47,7 @@ In microservices architecture, several shared components should be extracted int
 The following components are placed in separate Common library **Poke.CloudSalesSystem.Common** but are good candidates for extraction into separate libraries or NuGet package:
 - **Cache** - Redis, FusionCache
 - **Contract** - Common contracts used by each microservice
-- **Database** - Db apstraction - base entities, base DbContext...
+- **Database** - Db abstraction - base entities, base DbContext...
 - **Healthcheck** - Healthckeck configuration and service extensions
 - **Helpers** - Common help libraries (Validation, String manipulations...)
 - **Message Bus** - Common configuration of message bus, service extensions, registrations
