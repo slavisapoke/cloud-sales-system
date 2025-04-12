@@ -25,12 +25,12 @@ builder.Host.UseSerilog();
 builder.Services.AddControllers().AddJsonOptions(options =>
 {
     options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-}); 
+});
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+#region SWAGGER STUFF
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
 
 builder.Services.AddSwaggerDocument(settings =>
 {
@@ -45,7 +45,8 @@ builder.Services.AddSwaggerDocument(settings =>
             Url = "https://www.crayon.com"
         };
     };
-});
+}); 
+#endregion
 
 builder.Services.AddHealthChecks();
 builder.Services.ConfigureHealthCheckPublisher();

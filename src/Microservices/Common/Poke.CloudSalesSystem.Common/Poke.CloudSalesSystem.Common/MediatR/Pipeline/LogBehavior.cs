@@ -4,6 +4,11 @@ using Poke.CloudSalesSystem.Common.Constants;
 
 namespace Poke.CloudSalesSystem.Common.MediatR.Pipeline
 {
+    /// <summary>
+    /// Common logging behavior for MediatR communication
+    /// </summary>
+    /// <typeparam name="TRequest"></typeparam>
+    /// <typeparam name="TResponse"></typeparam>
     public class LogBehavior<TRequest, TResponse>
         : IPipelineBehavior<TRequest, TResponse>
         where TRequest : notnull

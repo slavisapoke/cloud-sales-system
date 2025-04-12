@@ -6,6 +6,10 @@ using System.Text.Json;
 
 namespace Poke.CloudSalesSystem.Common.HealthCheck
 {
+    /// <summary>
+    /// Generates formatted unhealthy report
+    /// </summary>
+    /// <param name="logger"></param>
     internal class HealthCheckPublisher(ILogger<HealthCheckPublisher> logger) : IHealthCheckPublisher
     {
         /// <summary>

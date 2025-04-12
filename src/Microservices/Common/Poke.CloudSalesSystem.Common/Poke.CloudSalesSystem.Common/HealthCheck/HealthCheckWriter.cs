@@ -6,6 +6,12 @@ namespace Poke.CloudSalesSystem.Common.HealthCheck;
 
 public sealed class HealthCheckWriter
 {
+    /// <summary>
+    /// Health check writter with some dummy decision logic 
+    /// </summary>
+    /// <param name="context"></param>
+    /// <param name="report"></param>
+    /// <returns></returns>
     public static async Task WriteResponseAsync(HttpContext context, HealthReport report)
     {
         context.Response.ContentType = "application/json";

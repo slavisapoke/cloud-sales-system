@@ -3,7 +3,12 @@ using Poke.CloudSalesSystem.Gateway.Application.Abstract.Services;
 
 namespace Poke.CloudSalesSystem.Gateway.API.Handlers;
 
-public class AuthorizationForwarderMiddleware(
+/// <summary>
+/// Dummy authorization handler sending dummy authorization payload to downstream services
+/// </summary>
+/// <param name="userProvider"></param>
+/// <param name="httpContextAccessor"></param>
+public class AuthorizationForwarderHandler(
     ICurrentUserProvider userProvider,
     IHttpContextAccessor httpContextAccessor) : DelegatingHandler
 { 

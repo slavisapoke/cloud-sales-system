@@ -1,7 +1,6 @@
 ﻿using Infrastructure.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Poke.CloudSalesSystem.Gateway.Application.Abstract.Services;
 using Poke.CloudSalesSystem.Gateway.Infrastructure.Services.Downstream;
 
 namespace Poke.CloudSalesSystem.Gateway.Infrastructure;

@@ -6,6 +6,11 @@ namespace Poke.CloudSalesSystem.Common.HealthCheck
 {
     public static class HealthCheckOptionsHelper
     {
+        /// <summary>
+        /// Creates healthcheck options with custom response writer
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
         public static HealthCheckOptions GetHealthCheckOptions(Func<HealthCheckRegistration, bool> predicate = null)
         {
             return new HealthCheckOptions

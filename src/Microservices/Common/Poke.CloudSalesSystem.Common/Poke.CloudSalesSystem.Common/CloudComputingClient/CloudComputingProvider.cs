@@ -21,6 +21,8 @@ public class CloudComputingProvider : ICloudComputingProvider
         _logger = logger;
         _ccConfig = Preconditions.CheckNotNull(ccOptions.Value, nameof(ccOptions));
     }
+
+    /// <inheritdoc/>
     public async Task<IResult<IEnumerable<CloudComputingService>>> GetServices(CancellationToken cancellationToken)
     {
         using var client = new MockHttpClientBuilder(_ccConfig.ServiceUrl)
@@ -44,6 +46,7 @@ public class CloudComputingProvider : ICloudComputingProvider
         return Result.Ok(result);
     }
 
+    /// <inheritdoc/>
     public async Task<IResult<OrderLicencesResponse>> OrderLicences(Guid accountId, Guid serviceId, int quantity,
         CancellationToken cancellationToken)
     {
@@ -68,6 +71,7 @@ public class CloudComputingProvider : ICloudComputingProvider
         return Result.Ok(result!);
     }
 
+    /// <inheritdoc/>
     public async Task<IResult<ActionResponse>> CancelSubscription(Guid serviceId, Guid accountId, CancellationToken cancellationToken)
     {
         using var client = new MockHttpClientBuilder(_ccConfig.ServiceUrl)
@@ -91,6 +95,7 @@ public class CloudComputingProvider : ICloudComputingProvider
         return Result.Ok(result!);
     }
 
+    /// <inheritdoc/>
     public async Task<IResult<ActionResponse>> UpdateLicenceQuantity(
         Guid serviceId, Guid accountId, int newQuantity,
         CancellationToken cancellationToken)
@@ -116,6 +121,7 @@ public class CloudComputingProvider : ICloudComputingProvider
         return Result.Ok(result!);
     }
 
+    /// <inheritdoc/>
     public async Task<IResult<ActionResponse>> ExtendLicence(Guid licenceId, Guid accountId, DateTimeOffset until,
         CancellationToken cancellationToken)
     {

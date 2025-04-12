@@ -22,6 +22,7 @@ public static class AppServiceExtensions
         using var scope = app.ApplicationServices.CreateScope();
         var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
 
+        //Adding resilience since dbs are slow starters
         var retryPolicy = Policy.Handle<Npgsql.NpgsqlException>()
             .WaitAndRetry(5,
             attempt => TimeSpan.FromSeconds(Math.Pow(2, attempt)), //exponential backoff

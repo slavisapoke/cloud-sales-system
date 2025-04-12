@@ -25,6 +25,7 @@ builder.Services.Configure<CloudComputingConfiguration>(
 
 builder.Services.RegisterServices(builder.Configuration);
 
+//Add hoster worker, checking for licence expiration
 builder.Services.AddHostedService<LicenceExpirationWorker>();
 
 builder.Host.UseSerilog();
@@ -32,7 +33,9 @@ builder.Host.UseSerilog();
 builder.Services.AddControllers().AddJsonOptions(options =>
 {
     options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-}); 
+});
+
+#region SWAGGER STUFF
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -50,7 +53,9 @@ builder.Services.AddSwaggerDocument(settings =>
             Url = "https://www.crayon.com"
         };
     };
-});
+}); 
+
+#endregion
 
 builder.Services.AddHealthChecks();
 builder.Services.ConfigureHealthCheckPublisher();

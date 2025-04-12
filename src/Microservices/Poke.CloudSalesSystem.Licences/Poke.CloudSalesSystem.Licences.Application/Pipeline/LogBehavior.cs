@@ -8,6 +8,11 @@ using EventCodes = Poke.CloudSalesSystem.Contracts.Events.Events.Constants.Codes
 
 namespace Poke.CloudSalesSystem.Licences.Application.Pipeline
 {
+    /// <summary>
+    /// MediatR communication behavior with sending exceptions to ActionFailedEvent queue
+    /// </summary>
+    /// <typeparam name="TRequest"></typeparam>
+    /// <typeparam name="TResponse"></typeparam>
     internal class LogBehavior<TRequest, TResponse>
         : IPipelineBehavior<TRequest, TResponse>
         where TRequest : notnull

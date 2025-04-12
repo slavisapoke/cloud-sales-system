@@ -1,0 +1,926 @@
+{
+	"info": {
+		"_postman_id": "2d4aeefc-376c-441c-a0b4-0fcaeadd28b6",
+		"name": "Cloud Sales System - CRAYON",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8035966"
+	},
+	"item": [
+		{
+			"name": "GATEWAY",
+			"item": [
+				{
+					"name": "Get Accounts For Customer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{gateway-api}}/accounts/get-by-customer/43c8a677-2345-4ba2-993e-46668d76ab6e",
+							"host": [
+								"{{gateway-api}}"
+							],
+							"path": [
+								"accounts",
+								"get-by-customer",
+								"43c8a677-2345-4ba2-993e-46668d76ab6e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get customers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{gateway-api}}/customers",
+							"host": [
+								"{{gateway-api}}"
+							],
+							"path": [
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Providers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{gateway-api}}/providers",
+							"host": [
+								"{{gateway-api}}"
+							],
+							"path": [
+								"providers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CCP - Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{gateway-api}}/products/d484eb26-9d42-4c16-89cb-ce75e0ab5afa",
+							"host": [
+								"{{gateway-api}}"
+							],
+							"path": [
+								"products",
+								"d484eb26-9d42-4c16-89cb-ce75e0ab5afa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Other Provider - Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{gateway-api}}/Products/d0d8a489-7129-4125-b2dc-027e26936e6c",
+							"host": [
+								"{{gateway-api}}"
+							],
+							"path": [
+								"Products",
+								"d0d8a489-7129-4125-b2dc-027e26936e6c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Invalid Provider",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{gateway-api}}/Products/d0d8a489-7129-4125-b2dc-000000000000",
+							"host": [
+								"{{gateway-api}}"
+							],
+							"path": [
+								"Products",
+								"d0d8a489-7129-4125-b2dc-000000000000"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Licences for Account",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{gateway-api}}/Licences/62db564e-5ef0-4614-9127-562a8b2856db",
+							"host": [
+								"{{gateway-api}}"
+							],
+							"path": [
+								"Licences",
+								"62db564e-5ef0-4614-9127-562a8b2856db"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Order - No such service",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"accountId\": \"230950e0-fb93-406d-bf9d-61aee5de4506\",\r\n  \"serviceId\": \"230950e0-fb93-406d-bf9d-61aee5de4506\",\r\n  \"quantity\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{gateway-api}}/Licences/order",
+							"host": [
+								"{{gateway-api}}"
+							],
+							"path": [
+								"Licences",
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Order - Licences aquired",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"accountId\": \"61db564e-5ef0-4614-9127-562a8b2856db\",\r\n  \"serviceId\": \"d284eb26-9d42-4c16-89cb-ce75e0ab5afa\",\r\n  \"quantity\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{gateway-api}}/Licences/order",
+							"host": [
+								"{{gateway-api}}"
+							],
+							"path": [
+								"Licences",
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Order - New Subscription Aquired",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"accountId\": \"64db564e-5ef0-4614-9127-562a8b2856db\",\r\n  \"serviceId\": \"d284eb26-9d42-4c16-89cb-ce75e0ab5afa\",\r\n  \"quantity\": 15\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{gateway-api}}/Licences/order",
+							"host": [
+								"{{gateway-api}}"
+							],
+							"path": [
+								"Licences",
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Order- Fails for this account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"accountId\": \"63db564e-5ef0-4614-9127-562a8b2856db\",\r\n  \"serviceId\": \"d384eb26-9d42-4c16-89cb-ce75e0ab5afa\",\r\n  \"quantity\": 14\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{gateway-api}}/Licences/order",
+							"host": [
+								"{{gateway-api}}"
+							],
+							"path": [
+								"Licences",
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Software Subscription",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"accountId\": \"64db564e-5ef0-4614-9127-562a8b2856db\",\r\n  \"serviceId\": \"d284eb26-9d42-4c16-89cb-ce75e0ab5afa\"                                \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{gateway-api}}/Licences/subscription/cancel",
+							"host": [
+								"{{gateway-api}}"
+							],
+							"path": [
+								"Licences",
+								"subscription",
+								"cancel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Quantity - Success",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"accountId\": \"61db564e-5ef0-4614-9127-562a8b2856db\",\r\n  \"serviceId\": \"d284eb26-9d42-4c16-89cb-ce75e0ab5afa\",\r\n  \"newQuantity\" : 22                     \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{gateway-api}}/Licences/subscription/update",
+							"host": [
+								"{{gateway-api}}"
+							],
+							"path": [
+								"Licences",
+								"subscription",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Extend - Not in DB",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"accountId\": \"3f2504e0-4f89-11d3-9a0c-0305e82c3301\",\r\n  \"licenceId\": \"3f2504e0-4f89-11d3-9a0c-0305e82c3301\",\r\n  \"until\": \"2025-06-10T10:14:14.298Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{gateway-api}}/Licences/extend",
+							"host": [
+								"{{gateway-api}}"
+							],
+							"path": [
+								"Licences",
+								"extend"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Extend - Account is not owner",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"accountId\": \"3f2504e0-4f89-11d3-9a0c-0305e82c3301\",\r\n  \"licenceId\": \"2c0950e0-fb93-406d-bf9d-61aee5de4506\",\r\n  \"until\": \"2025-06-10T10:14:14.298Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{gateway-api}}/Licences/extend",
+							"host": [
+								"{{gateway-api}}"
+							],
+							"path": [
+								"Licences",
+								"extend"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Extend - Already active with longer expiration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"accountId\": \"62db564e-5ef0-4614-9127-562a8b2856db\",\r\n  \"licenceId\": \"2c0950e0-fb93-406d-bf9d-61aee5de4506\",\r\n  \"until\": \"2026-04-10T10:14:14.298Z\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{gateway-api}}/Licences/extend",
+							"host": [
+								"{{gateway-api}}"
+							],
+							"path": [
+								"Licences",
+								"extend"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Extend - Licence extended and activated",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"accountId\": \"62db564e-5ef0-4614-9127-562a8b2856db\",\r\n  \"licenceId\": \"2c0950e0-fb93-406d-bf9d-61aee5de4506\",\r\n  \"until\": \"2026-07-10T10:14:13.298Z\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{gateway-api}}/Licences/extend",
+							"host": [
+								"{{gateway-api}}"
+							],
+							"path": [
+								"Licences",
+								"extend"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							"pm.request.headers.add({\r",
+							"    key: 'KIND_OF_AUTHORIZATION',\r",
+							"    value: '43c8a677-2345-4ba2-993e-46668d76ab6e'\r",
+							"});"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Customers",
+			"item": [
+				{
+					"name": "Get customers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{customer-api}}/customers",
+							"host": [
+								"{{customer-api}}"
+							],
+							"path": [
+								"customers"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Accounts",
+			"item": [
+				{
+					"name": "Get Accounts For Customer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{account-api}}/accounts/get-by-customer/43c8a677-2345-4ba2-993e-46668d76ab6e",
+							"host": [
+								"{{account-api}}"
+							],
+							"path": [
+								"accounts",
+								"get-by-customer",
+								"43c8a677-2345-4ba2-993e-46668d76ab6e"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Licences",
+			"item": [
+				{
+					"name": "Get Licences for Account",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{licence-api}}/Licences/62db564e-5ef0-4614-9127-562a8b2856db",
+							"host": [
+								"{{licence-api}}"
+							],
+							"path": [
+								"Licences",
+								"62db564e-5ef0-4614-9127-562a8b2856db"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Order - No such service",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"accountId\": \"230950e0-fb93-406d-bf9d-61aee5de4506\",\r\n  \"serviceId\": \"230950e0-fb93-406d-bf9d-61aee5de4506\",\r\n  \"quantity\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{licence-api}}/Licences/order",
+							"host": [
+								"{{licence-api}}"
+							],
+							"path": [
+								"Licences",
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Order - Licences aquired",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"accountId\": \"61db564e-5ef0-4614-9127-562a8b2856db\",\r\n  \"serviceId\": \"d284eb26-9d42-4c16-89cb-ce75e0ab5afa\",\r\n  \"quantity\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{licence-api}}/Licences/order",
+							"host": [
+								"{{licence-api}}"
+							],
+							"path": [
+								"Licences",
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Order - New Subscription Aquired",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"accountId\": \"64db564e-5ef0-4614-9127-562a8b2856db\",\r\n  \"serviceId\": \"d284eb26-9d42-4c16-89cb-ce75e0ab5afa\",\r\n  \"quantity\": 15\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{licence-api}}/Licences/order",
+							"host": [
+								"{{licence-api}}"
+							],
+							"path": [
+								"Licences",
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Order - Licences aquired partially",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"accountId\": \"62db564e-5ef0-4614-9127-562a8b2856db\",\r\n  \"serviceId\": \"d384eb26-9d42-4c16-89cb-ce75e0ab5afa\",\r\n  \"quantity\": 14\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{licence-api}}/Licences/order",
+							"host": [
+								"{{licence-api}}"
+							],
+							"path": [
+								"Licences",
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Order- Fails for this account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"accountId\": \"63db564e-5ef0-4614-9127-562a8b2856db\",\r\n  \"serviceId\": \"d384eb26-9d42-4c16-89cb-ce75e0ab5afa\",\r\n  \"quantity\": 14\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{licence-api}}/Licences/order",
+							"host": [
+								"{{licence-api}}"
+							],
+							"path": [
+								"Licences",
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Software Subscription",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"accountId\": \"64db564e-5ef0-4614-9127-562a8b2856db\",\r\n  \"serviceId\": \"d284eb26-9d42-4c16-89cb-ce75e0ab5afa\"                                \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{licence-api}}/Licences/subscription/cancel",
+							"host": [
+								"{{licence-api}}"
+							],
+							"path": [
+								"Licences",
+								"subscription",
+								"cancel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Quantity - Subscription not found",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"accountId\": \"64db564e-5ef0-4614-9127-562a8b2856db\",\r\n  \"serviceId\": \"64db564e-5ef0-4614-9127-562a8b2856db\",\r\n  \"newQuantity\" : 10                     \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{licence-api}}/Licences/subscription/update",
+							"host": [
+								"{{licence-api}}"
+							],
+							"path": [
+								"Licences",
+								"subscription",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Quantity - Success",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"accountId\": \"61db564e-5ef0-4614-9127-562a8b2856db\",\r\n  \"serviceId\": \"d284eb26-9d42-4c16-89cb-ce75e0ab5afa\",\r\n  \"newQuantity\" : 22                     \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{licence-api}}/Licences/subscription/update",
+							"host": [
+								"{{licence-api}}"
+							],
+							"path": [
+								"Licences",
+								"subscription",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Extend - Not in DB",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"accountId\": \"3f2504e0-4f89-11d3-9a0c-0305e82c3301\",\r\n  \"licenceId\": \"3f2504e0-4f89-11d3-9a0c-0305e82c3301\",\r\n  \"until\": \"2025-06-10T10:14:14.298Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{licence-api}}/Licences/extend",
+							"host": [
+								"{{licence-api}}"
+							],
+							"path": [
+								"Licences",
+								"extend"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Extend - Account is not owner",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"accountId\": \"3f2504e0-4f89-11d3-9a0c-0305e82c3301\",\r\n  \"licenceId\": \"2c0950e0-fb93-406d-bf9d-61aee5de4506\",\r\n  \"until\": \"2025-06-10T10:14:14.298Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{licence-api}}/Licences/extend",
+							"host": [
+								"{{licence-api}}"
+							],
+							"path": [
+								"Licences",
+								"extend"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Extend - Already active with longer expiration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"accountId\": \"62db564e-5ef0-4614-9127-562a8b2856db\",\r\n  \"licenceId\": \"2c0950e0-fb93-406d-bf9d-61aee5de4506\",\r\n  \"until\": \"2025-06-10T10:14:14.298Z\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{licence-api}}/Licences/extend",
+							"host": [
+								"{{licence-api}}"
+							],
+							"path": [
+								"Licences",
+								"extend"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Extend - Licence extended and activated",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"accountId\": \"62db564e-5ef0-4614-9127-562a8b2856db\",\r\n  \"licenceId\": \"2c0950e0-fb93-406d-bf9d-61aee5de4506\",\r\n  \"until\": \"2026-07-10T10:14:13.298Z\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{licence-api}}/Licences/extend",
+							"host": [
+								"{{licence-api}}"
+							],
+							"path": [
+								"Licences",
+								"extend"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Get Providers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{product-api}}/providers",
+							"host": [
+								"{{product-api}}"
+							],
+							"path": [
+								"providers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CCP - Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{product-api}}/Products/d484eb26-9d42-4c16-89cb-ce75e0ab5afa",
+							"host": [
+								"{{product-api}}"
+							],
+							"path": [
+								"Products",
+								"d484eb26-9d42-4c16-89cb-ce75e0ab5afa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Other Provider - Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{product-api}}/Products/d0d8a489-7129-4125-b2dc-027e26936e6c",
+							"host": [
+								"{{product-api}}"
+							],
+							"path": [
+								"Products",
+								"d0d8a489-7129-4125-b2dc-027e26936e6c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Invalid Provider",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{product-api}}/Products/d0d8a489-7129-4125-b2dc-000000000000",
+							"host": [
+								"{{product-api}}"
+							],
+							"path": [
+								"Products",
+								"d0d8a489-7129-4125-b2dc-000000000000"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "HEALTHCHECK",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{gateway-api}}/readiness",
+					"host": [
+						"{{gateway-api}}"
+					],
+					"path": [
+						"readiness"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

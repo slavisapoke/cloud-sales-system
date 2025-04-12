@@ -6,6 +6,9 @@ using System.Net.Http.Json;
 
 namespace Poke.CloudSalesSystem.Common.CloudComputingClient.MockHttp;
 
+/// <summary>
+/// Fluent builder of mock http client for Cloud Computing Provider service
+/// </summary>
 internal class MockHttpClientBuilder
 {
     private string _serviceUrl;

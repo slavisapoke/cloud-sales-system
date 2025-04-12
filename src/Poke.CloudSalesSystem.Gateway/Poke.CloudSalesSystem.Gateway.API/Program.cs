@@ -37,7 +37,9 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddControllers().AddJsonOptions(options =>
 {
     options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-}); 
+});
+
+#region SWAGGER STUFF
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -54,8 +56,14 @@ builder.Services.AddSwaggerDocument(settings =>
             Url = "https://www.crayon.com"
         };
     };
-});
+}); 
 
+#endregion
+
+/**
+ Just an example, but not so good solution
+ What if products service is down, gateway health can be degraded but can continue for other endpoints
+ */
 builder.Services.AddHealthChecks()
     .AddUrlGroup(new Uri($"{servicesConfig!.ProductServiceBaseUrl}/readiness"), 
         name: "Product API", timeout: TimeSpan.FromSeconds(3))

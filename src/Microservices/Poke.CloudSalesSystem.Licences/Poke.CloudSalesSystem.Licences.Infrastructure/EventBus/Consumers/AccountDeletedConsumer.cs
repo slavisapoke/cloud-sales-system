@@ -10,6 +10,12 @@ using SubscriptionContract = Poke.CloudSalesSystem.Common.Contracts.Licences.Sub
 
 namespace Poke.CloudSalesSystem.Licences.Infrastructure.EventBus.Consumers
 {
+    /// <summary>
+    /// Example of a consumer. Accepts AccountDeleted from event bus, and acts accordingly
+    /// </summary>
+    /// <param name="mapper"></param>
+    /// <param name="dbContext"></param>
+    /// <param name="logger"></param>
     public class AccountDeletedConsumer(
         IMapper mapper,
         ILicencesDbContext dbContext,
@@ -46,6 +52,7 @@ namespace Poke.CloudSalesSystem.Licences.Infrastructure.EventBus.Consumers
                 var subs = mapper.Map<IReadOnlyCollection<SubscriptionContract>>(subscriptions);
                 var lics = mapper.Map<IReadOnlyCollection<Licence>>(subscriptions.SelectMany(s => s.Licences));
 
+                //Maybe use IEventPublisher?? it's oke
                 try { await context.Publish(subs); } catch { }
                 try { await context.Publish(lics); } catch { }
             }

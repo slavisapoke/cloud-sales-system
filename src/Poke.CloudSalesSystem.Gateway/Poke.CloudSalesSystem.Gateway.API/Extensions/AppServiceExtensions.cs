@@ -24,9 +24,14 @@ public static class AppServiceExtensions
         return services;
     }
 
+    /// <summary>
+    /// Registering downstream service clients
+    /// </summary>
+    /// <param name="services"></param>
+    /// <returns></returns>
     public static IServiceCollection RegisterHttpClients(this IServiceCollection services)
     {
-        services.AddTransient<AuthorizationForwarderMiddleware>();
+        services.AddTransient<AuthorizationForwarderHandler>();
 
         services.AddHttpClient(HttpNamedClient.CUSTOMER_SERVICE, (services, client) =>
             {
@@ -36,7 +41,7 @@ public static class AppServiceExtensions
                 client.BaseAddress = new Uri(downstreamConfig.CustomerServiceBaseUrl);
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
             })
-            .AddHttpMessageHandler<AuthorizationForwarderMiddleware>()
+            .AddHttpMessageHandler<AuthorizationForwarderHandler>()
             .AddPolicyHandler(GetRetryPolicy());
 
         services.AddHttpClient(HttpNamedClient.PRODUCT_SERVICE, (services, client) =>
@@ -47,7 +52,7 @@ public static class AppServiceExtensions
                 client.BaseAddress = new Uri(downstreamConfig.ProductServiceBaseUrl);
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
             })
-            .AddHttpMessageHandler<AuthorizationForwarderMiddleware>()
+            .AddHttpMessageHandler<AuthorizationForwarderHandler>()
             .AddPolicyHandler(GetRetryPolicy());
 
         services.AddHttpClient(HttpNamedClient.ACCOUNT_SERVICE, (services, client) =>
@@ -58,7 +63,7 @@ public static class AppServiceExtensions
                 client.BaseAddress = new Uri(downstreamConfig.AccountServiceBaseUrl);
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
             })
-            .AddHttpMessageHandler<AuthorizationForwarderMiddleware>()
+            .AddHttpMessageHandler<AuthorizationForwarderHandler>()
             .AddPolicyHandler(GetRetryPolicy());
 
         services.AddHttpClient(HttpNamedClient.LICENCE_SERVICE, (services, client) =>
@@ -69,7 +74,7 @@ public static class AppServiceExtensions
                 client.BaseAddress = new Uri(downstreamConfig.LicenceServiceBaseUrl);
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
             })
-            .AddHttpMessageHandler<AuthorizationForwarderMiddleware>()
+            .AddHttpMessageHandler<AuthorizationForwarderHandler>()
             .AddPolicyHandler(GetRetryPolicy()); 
 
         return services;

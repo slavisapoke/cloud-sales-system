@@ -4,6 +4,11 @@ using Poke.CloudSalesSystem.Common.Constants;
 
 namespace Poke.CloudSalesSystem.Common.MessageBus.RabbitMQ.Filters;
 
+/// <summary>
+/// Just logging what publisher sends
+/// </summary>
+/// <typeparam name="T"></typeparam>
+/// <param name="logger"></param>
 public class LoggingPublishFilter<T> (ILogger<LoggingPublishFilter<T>> logger)
     : IFilter<PublishContext<T>> where T : class
 {

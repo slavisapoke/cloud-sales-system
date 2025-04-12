@@ -2,9 +2,19 @@
 
 namespace Poke.CloudSalesSystem.Common.Helpers;
 
+/// <summary>
+/// Dummy licence key generator
+/// </summary>
 public static class LicenceGenerator
 {
-    public static string GenerateSegmentedString(char splitter, int numOfSegments = 5, int segmentLength = 5)
+    /// <summary>
+    /// Generates string consisted of segments separated by the given separator
+    /// </summary>
+    /// <param name="separator">Separator</param>
+    /// <param name="numOfSegments">How many segments</param>
+    /// <param name="segmentLength">Segment length</param>
+    /// <returns></returns>
+    public static string GenerateSegmentedString(char separator, int numOfSegments = 5, int segmentLength = 5)
     {
         Preconditions.CheckGreaterThanZero(numOfSegments);
         Preconditions.CheckGreaterThanZero(segmentLength);
@@ -16,7 +26,7 @@ public static class LicenceGenerator
             parts[i] = GenerateRandomPart(segmentLength);
         }
 
-        return string.Join(splitter, parts);
+        return string.Join(separator, parts);
     }
 
     private static string GenerateRandomPart(int length)

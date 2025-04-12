@@ -6,10 +6,21 @@ using Poke.CloudSalesSystem.Licences.Application.Abstract;
 
 namespace Poke.CloudSalesSystem.Licences.Infrastructure.EventBus.Publisher
 {
+    /// <summary>
+    /// Event publishing to MassTransit
+    /// </summary>
+    /// <param name="publisher"></param>
+    /// <param name="logger"></param>
     public class EventPublisher(
         IPublishEndpoint publisher,
         ILogger<EventPublisher> logger) : IEventPublisher
     {
+        /// <summary>
+        /// Safe event publishing
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="event"></param>
+        /// <returns></returns>
         public async Task Publish<T>(T @event)
             where T : ICloudSalesEvent
         {

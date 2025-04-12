@@ -25,6 +25,7 @@ public class LicencesDbContext : BaseDbContext, ILicencesDbContext
         base.OnModelCreating(modelBuilder);
         Seeder.Seed(modelBuilder);
 
+        //Registering outbox for masstransit
         modelBuilder.AddInboxStateEntity();
         modelBuilder.AddOutboxMessageEntity();
         modelBuilder.AddOutboxStateEntity();

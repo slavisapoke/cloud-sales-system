@@ -21,6 +21,7 @@ public static class DIExtensions
             configuration.AddOpenBehavior(typeof(LogBehavior<,>));
         });
 
+        //Registering common handler injection parameters
         services.AddTransient<HandlerParams<CancelSubscriptionCommandHandler>>();
         services.AddTransient<HandlerParams<ExtendLicenceCommandHandler>>();
         services.AddTransient<HandlerParams<OrderLicencesCommandHandler>>();
