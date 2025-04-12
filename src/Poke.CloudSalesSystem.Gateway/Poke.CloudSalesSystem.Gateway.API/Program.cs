@@ -98,4 +98,8 @@ app.MapControllers();
 
 app.Run();
 
+/// <summary>
+/// For integration tests
+/// </summary>
+public partial class Program {}
 

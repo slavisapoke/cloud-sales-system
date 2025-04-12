@@ -13,10 +13,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4F78941C-EAE
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{15F07E7E-03BA-4AB0-A703-A4B472CAC26E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poke.CloudSalesSystem.Gateway.Tests", "Poke.CloudSalesSystem.Gateway.Tests\Poke.CloudSalesSystem.Gateway.Tests.csproj", "{87CFC8A0-2371-4562-8EF2-F77080D34B10}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poke.CloudSalesSystem.Gateway.API.Tests", "Poke.CloudSalesSystem.Gateway.Tests\Poke.CloudSalesSystem.Gateway.API.Tests.csproj", "{87CFC8A0-2371-4562-8EF2-F77080D34B10}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C148D604-5061-471D-ADA6-E30D7BC23E9F}"
 	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
 		Dockerfile = Dockerfile
 	EndProjectSection
 EndProject
@@ -27,6 +28,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poke.CloudSalesSystem.Common", "..\Microservices\Common\Poke.CloudSalesSystem.Common\Poke.CloudSalesSystem.Common\Poke.CloudSalesSystem.Common.csproj", "{21C968C3-797D-4B98-9127-6C4DFD1353B5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poke.CloudSalesSystem.Gateway.API", "Poke.CloudSalesSystem.Gateway.API\Poke.CloudSalesSystem.Gateway.API.csproj", "{811288CE-C986-494F-8594-AF37B8A1DDCF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poke.CloudSalesSystem.Gateway.Infrastructure.Tests", "Poke.CloudSalesSystem.Gateway.Infrastructure.Tests\Poke.CloudSalesSystem.Gateway.Infrastructure.Tests.csproj", "{E8FDD4CA-94DC-41C6-8C2F-29C26603B050}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -62,6 +65,10 @@ Global
 		{811288CE-C986-494F-8594-AF37B8A1DDCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{811288CE-C986-494F-8594-AF37B8A1DDCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{811288CE-C986-494F-8594-AF37B8A1DDCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8FDD4CA-94DC-41C6-8C2F-29C26603B050}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8FDD4CA-94DC-41C6-8C2F-29C26603B050}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8FDD4CA-94DC-41C6-8C2F-29C26603B050}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8FDD4CA-94DC-41C6-8C2F-29C26603B050}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,6 +81,7 @@ Global
 		{4B12FA8E-2CE2-4FAF-B8C6-D4047A3CB299} = {F31F023B-FFF8-4479-8AFE-8BF3495600A5}
 		{21C968C3-797D-4B98-9127-6C4DFD1353B5} = {F31F023B-FFF8-4479-8AFE-8BF3495600A5}
 		{811288CE-C986-494F-8594-AF37B8A1DDCF} = {4F78941C-EAEF-4148-8475-CCEDCE0BF93B}
+		{E8FDD4CA-94DC-41C6-8C2F-29C26603B050} = {15F07E7E-03BA-4AB0-A703-A4B472CAC26E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {48109745-2928-4342-94FA-BA57FE134A64}
