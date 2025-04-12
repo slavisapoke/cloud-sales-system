@@ -94,12 +94,12 @@ Collection structure:
 
 ---
 
-## HUGE TODOS
-
-Due to time constraints the solution lacks of:
-- Unit and integration tests — only a few example tests have been included to demonstrate the intended testing approach.
+## HUGE TO-DOs
+Due to time constraints, most of the core business logic has not been fully implemented. The focus was placed on setting up the structure, demonstrating intent, and showcasing a possible approach.
+Required improvements:
+- Unit and integration tests — only a few examples tests have been included to demonstrate the intended testing approach.
 - Sofisticated exception handling (Middleware, ProblemDetails...)
 - Better validation (Fluent if needed)
 - Workers not implemented
 - Auth done just as mock example (passing some info through custom request header)
-- Microservices should be communicating via SSL
+- Microservices should communicate via SSL
