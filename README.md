@@ -15,17 +15,11 @@ The system should enable customers to:
 - ❌ Cancel a purchased software license
 - 📆 Extend the validity of a license
 
-Each software license includes:
-- Software name (e.g., Microsoft Office)
-- Quantity (number of licenses)
-- Status (active, etc.)
-- Valid-to date (e.g., 31st August 2023)
-
 ---
 
 ## ⚙️ Technical Implementation
 
-This solution was designed with modern microservice architecture principles using **.NET Core** and **Docker**. Here's a summary of the technical choices and structure:
+This solution was designed with microservice architecture principles using **.NET Core** and **Docker**. Here's a summary of the technical choices and structure:
 
 ### 🧱 Technology stack
 
@@ -60,20 +54,43 @@ The following components are placed in separate Common library **Poke.CloudSales
 - **Logging/Trancint** - Common libs for logging, Logging pipelines...
 - **Api response defs** - API response wrappers / result standardization
 - **Exception handling** - Middleware stuff, Common Exceptions, Error codes...
+
 ---
 
-## 🚀 How to Run
+## System Design (HLA)
+For High Level Architecture overview please refer to [SYSTEM DESIGN](Docs/Solution/SystemOverview.docx)
 
-> Download and extract
-> Make sure docker desktop is running (this build is tested on Windows 11 with Docker 4.28.0 with Engine: 25.0.3)
-> Open powershell console and navigate to src folder
-> execute ps script - start.ps1 or execute command 'docker compose up -d'
-> Both commands do the same job. If there were not images, process will build the images and eventually start
+---
 
-## ❌ How to Stop
-> Powershell navigate into the same directory (src)
-> execute ps script - stop.ps1, or execute command 'docker compose down'
-> This will stop and remove all containers.
+### 🚀 How to Run
+
+- Download and extract
+- Make sure docker desktop is running (this build is tested on Windows 11 with Docker 4.28.0 with Engine: 25.0.3)
+- Open powershell console and navigate to src folder
+- execute ps script - start.ps1 or execute command 'docker compose up -d'
+- Both commands do the same job. If there were no images already, command will build the images and eventually start
+
+## Test the API endpoints
+For testing purposes POSTMAN collection is provided:
+- [POSTMAN 2.1](Docs/Solution/Cloud%20Sales%20System%20-%20CRAYON(2.0).postman_collection.json)
+- [POSTMAN 2.0](Docs/Solution/Cloud%20Sales%20System%20-%20CRAYON(2.0).postman_collection.json)
+- [POSTMAN ENVIRONMENT](Docs/Solution/CrayonEnv.postman_environment.json)
+
+After importing env and collections, choosing environemnt in postman, you are ready to go!
+
+Collection structure:
+- GATEWAY - folder with gateway endpoints
+- Customers - endpoints for Customer API microservice
+- Accounts - endpoints for Account API microservice
+- Licences - endpoints for Licence API microservice
+- Products - endpoints for Products API microservice
+- HEALTHCHECK - endpoint for system healthcheck
+
+
+### ❌ How to Stop
+- Powershell navigate into the same directory (src)
+- execute ps script - stop.ps1, or execute command 'docker compose down'
+- This will stop and remove all containers.
 
 ---
 
