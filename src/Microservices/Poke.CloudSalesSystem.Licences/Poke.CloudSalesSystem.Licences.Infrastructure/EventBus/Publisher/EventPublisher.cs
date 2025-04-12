@@ -1,6 +1,7 @@
 ﻿using MassTransit;
 using Microsoft.Extensions.Logging;
 using Poke.CloudSalesSystem.Common.Constants;
+using Poke.CloudSalesSystem.Contracts.Events.Events;
 using Poke.CloudSalesSystem.Licences.Application.Abstract;
 
 namespace Poke.CloudSalesSystem.Licences.Infrastructure.EventBus.Publisher
@@ -10,6 +11,7 @@ namespace Poke.CloudSalesSystem.Licences.Infrastructure.EventBus.Publisher
         ILogger<EventPublisher> logger) : IEventPublisher
     {
         public async Task Publish<T>(T @event)
+            where T : ICloudSalesEvent
         {
             try
             {

@@ -2,4 +2,4 @@
 
 namespace Poke.CloudSalesSystem.Contracts.Events.Events.Subscriptions;
 
-public record SubscriptionCreated(Subscription licence);
+public record SubscriptionCreated(Subscription licence) : ICloudSalesEvent;

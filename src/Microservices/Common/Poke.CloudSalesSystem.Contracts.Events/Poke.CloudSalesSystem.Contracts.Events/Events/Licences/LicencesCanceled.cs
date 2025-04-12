@@ -2,4 +2,4 @@
 
 namespace Poke.CloudSalesSystem.Contracts.Events.Events.Licences;
 
-public record LicencesCanceled(IReadOnlyCollection<Licence> licences);
+public record LicencesCanceled(IReadOnlyCollection<Licence> licences) : ICloudSalesEvent;

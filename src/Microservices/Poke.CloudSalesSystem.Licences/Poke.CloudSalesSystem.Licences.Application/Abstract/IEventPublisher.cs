@@ -1,6 +1,8 @@
-﻿namespace Poke.CloudSalesSystem.Licences.Application.Abstract;
+﻿using Poke.CloudSalesSystem.Contracts.Events.Events;
 
-public interface IEventPublisher
+namespace Poke.CloudSalesSystem.Licences.Application.Abstract;
+
+public interface IEventPublisher 
 {
-    Task Publish<T>(T @event);
+    Task Publish<T>(T @event) where T : ICloudSalesEvent;
 }

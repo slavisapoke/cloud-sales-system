@@ -2,6 +2,7 @@ using NSwag;
 using Poke.CloudSalesSystem.Common.CloudComputingClient;
 using Poke.CloudSalesSystem.Common.HealthCheck;
 using Poke.CloudSalesSystem.Licences.API.Extensions;
+using Poke.CloudSalesSystem.Licences.Infrastructure.Workers;
 using Serilog;
 using System.Text.Json.Serialization;
 
@@ -23,6 +24,8 @@ builder.Services.Configure<CloudComputingConfiguration>(
     builder.Configuration.GetSection(nameof(CloudComputingConfiguration)));
 
 builder.Services.RegisterServices(builder.Configuration);
+
+builder.Services.AddHostedService<LicenceExpirationWorker>();
 
 builder.Host.UseSerilog();
 

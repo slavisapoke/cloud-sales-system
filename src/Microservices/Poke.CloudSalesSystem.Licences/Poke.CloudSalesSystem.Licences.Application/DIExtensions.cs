@@ -1,6 +1,11 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Poke.CloudSalesSystem.Common.MediatR.Pipeline;
+using Poke.CloudSalesSystem.Licences.Application.Handlers;
+using Poke.CloudSalesSystem.Licences.Application.Handlers.Command.CancelSubscription;
+using Poke.CloudSalesSystem.Licences.Application.Handlers.Command.ExtendLicence;
+using Poke.CloudSalesSystem.Licences.Application.Handlers.Command.OrderLicences;
+using Poke.CloudSalesSystem.Licences.Application.Handlers.Command.UpdateLicenceQuantity;
+using Poke.CloudSalesSystem.Licences.Application.Pipeline;
 
 namespace Poke.CloudSalesSystem.Licences.Application;
 
@@ -15,6 +20,11 @@ public static class DIExtensions
             configuration.RegisterServicesFromAssembly(typeof(DIExtensions).Assembly);
             configuration.AddOpenBehavior(typeof(LogBehavior<,>));
         });
+
+        services.AddTransient<HandlerParams<CancelSubscriptionCommandHandler>>();
+        services.AddTransient<HandlerParams<ExtendLicenceCommandHandler>>();
+        services.AddTransient<HandlerParams<OrderLicencesCommandHandler>>();
+        services.AddTransient<HandlerParams<UpdateLicenceQuantityCommandHandler>>();
 
         return services;
     }

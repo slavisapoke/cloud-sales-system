@@ -2,4 +2,4 @@
 
 namespace Poke.CloudSalesSystem.Contracts.Events.Events.Licences;
 
-public record LicensesExtended(Licence licence);
+public record LicensesExtended(Licence licence) : ICloudSalesEvent;

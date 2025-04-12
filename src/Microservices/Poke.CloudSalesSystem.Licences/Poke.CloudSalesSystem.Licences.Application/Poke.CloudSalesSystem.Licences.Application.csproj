@@ -5,6 +5,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Configuration\**" />
+    <EmbeddedResource Remove="Configuration\**" />
+    <None Remove="Configuration\**" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
@@ -16,9 +22,5 @@
     <ProjectReference Include="..\..\Common\Poke.CloudSalesSystem.Common\Poke.CloudSalesSystem.Common\Poke.CloudSalesSystem.Common.csproj" />
     <ProjectReference Include="..\..\Common\Poke.CloudSalesSystem.Contracts.Events\Poke.CloudSalesSystem.Contracts.Events\Poke.CloudSalesSystem.Contracts.Events.csproj" />
     <ProjectReference Include="..\Poke.CloudSalesSystem.Licences.Domain\Poke.CloudSalesSystem.Licences.Domain.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Configuration\" />
-    <Folder Include="Pipeline\" />
   </ItemGroup>
 </Project>
