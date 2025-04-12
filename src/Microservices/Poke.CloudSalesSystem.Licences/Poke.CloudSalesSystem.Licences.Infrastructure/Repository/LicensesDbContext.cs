@@ -3,6 +3,7 @@ using Poke.CloudSalesSystem.Licences.Domain.Model;
 using Poke.CloudSalesSystem.Licences.Domain.Repository;
 using Poke.CloudSalesSystem.Licences.Infrastructure.Migrations;
 using Poke.CloudSalesSystem.Common.Database;
+using MassTransit;
 
 namespace Infrastructure.Repository;
  
@@ -23,5 +24,9 @@ public class LicencesDbContext : BaseDbContext, ILicencesDbContext
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(LicencesDbContext).Assembly);
         base.OnModelCreating(modelBuilder);
         Seeder.Seed(modelBuilder);
+
+        modelBuilder.AddInboxStateEntity();
+        modelBuilder.AddOutboxMessageEntity();
+        modelBuilder.AddOutboxStateEntity();
     }
 }

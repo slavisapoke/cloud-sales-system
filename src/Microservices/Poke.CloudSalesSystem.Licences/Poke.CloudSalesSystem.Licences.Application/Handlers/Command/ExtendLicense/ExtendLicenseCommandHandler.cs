@@ -1,10 +1,12 @@
-﻿using FluentResults;
+﻿using AutoMapper;
+using FluentResults;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using Poke.CloudSalesSystem.Common.CloudComputingClient.Abstract;
 using Poke.CloudSalesSystem.Common.Constants;
-using Poke.CloudSalesSystem.Licences.Application.Handlers.Command.CancelSubscription;
-using Poke.CloudSalesSystem.Licences.Application.Model;
+using Poke.CloudSalesSystem.Common.Contracts.Licences;
+using Poke.CloudSalesSystem.Contracts.Events.Events.Licences;
+using Poke.CloudSalesSystem.Licences.Application.Abstract;
 using Poke.CloudSalesSystem.Licences.Domain.Model;
 using Poke.CloudSalesSystem.Licences.Domain.Repository;
 
@@ -13,6 +15,8 @@ namespace Poke.CloudSalesSystem.Licences.Application.Handlers.Command.ExtendLice
 public class ExtendLicenceCommandHandler(
     ICloudComputingProvider provider,
     ILicencesDbContext dbContext,
+    IMapper mapper,
+    IEventPublisher eventPublisher,
     ILogger<ExtendLicenceCommandHandler> logger):
     IRequestHandler<ExtendLicenceCommand, IResult<ExtendLicenceCommandResponse>>
 {
@@ -48,8 +52,9 @@ public class ExtendLicenceCommandHandler(
 
         await dbContext.SaveChangesAsync();
 
-        //send event message to bus
-
+        //SEND EVENT
+        await eventPublisher.Publish(new LicensesExtended(mapper.Map<Licence>(licenceDb)));
+         
         var result = new ExtendLicenceCommandResponse(request.LicenceId, request.Until);
         return Result.Ok(result);
     }
