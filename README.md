@@ -81,12 +81,12 @@ For testing purposes POSTMAN collection is provided:
 After importing env and collections, choosing environemnt in postman, you are ready to go!
 
 Collection structure:
-- GATEWAY - folder with gateway endpoints
-- Customers - endpoints for Customer API microservice
-- Accounts - endpoints for Account API microservice
-- Licences - endpoints for Licence API microservice
-- Products - endpoints for Products API microservice
-- HEALTHCHECK - endpoint for system healthcheck
+- GATEWAY - folder with gateway endpoints - http://localhost:7000/swagger
+- Customers - endpoints for Customer API microservice - http://localhost:7001
+- Accounts - endpoints for Account API microservice - http://localhost:7002
+- Licences - endpoints for Licence API microservice - http://localhost:7003
+- Products - endpoints for Products API microservice - http://localhost:7004
+- HEALTHCHECK - endpoint for system healthcheck  - http://localhost:7000/readiness
 
 
 ### ❌ How to Stop
