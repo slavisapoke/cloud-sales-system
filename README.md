@@ -15,17 +15,11 @@ The system should enable customers to:
 - ❌ Cancel a purchased software license
 - 📆 Extend the validity of a license
 
-Each software license includes:
-- Software name (e.g., Microsoft Office)
-- Quantity (number of licenses)
-- Status (active, etc.)
-- Valid-to date (e.g., 31st August 2023)
-
 ---
 
 ## ⚙️ Technical Implementation
 
-This solution was designed with modern microservice architecture principles using **.NET Core** and **Docker**. Here's a summary of the technical choices and structure:
+This solution was designed with microservice architecture principles using **.NET Core** and **Docker**. Here's a summary of the technical choices and structure:
 
 ### 🧱 Technology stack
 
@@ -53,36 +47,59 @@ In microservices architecture, several shared components should be extracted int
 The following components are placed in separate Common library **Poke.CloudSalesSystem.Common** but are good candidates for extraction into separate libraries or NuGet package:
 - **Cache** - Redis, FusionCache
 - **Contract** - Common contracts used by each microservice
-- **Database** - Db apstraction - base entities, base DbContext...
+- **Database** - Db abstraction - base entities, base DbContext...
 - **Healthcheck** - Healthckeck configuration and service extensions
 - **Helpers** - Common help libraries (Validation, String manipulations...)
 - **Message Bus** - Common configuration of message bus, service extensions, registrations
 - **Logging/Trancint** - Common libs for logging, Logging pipelines...
 - **Api response defs** - API response wrappers / result standardization
 - **Exception handling** - Middleware stuff, Common Exceptions, Error codes...
----
-
-## 🚀 How to Run
-
-> Download and extract
-> Make sure docker desktop is running (this build is tested on Windows 11 with Docker 4.28.0 with Engine: 25.0.3)
-> Open powershell console and navigate to src folder
-> execute ps script - start.ps1 or execute command 'docker compose up -d'
-> Both commands do the same job. If there were not images, process will build the images and eventually start
-
-## ❌ How to Stop
-> Powershell navigate into the same directory (src)
-> execute ps script - stop.ps1, or execute command 'docker compose down'
-> This will stop and remove all containers.
 
 ---
 
-## HUGE TODOS
+## System Design (HLA)
+For High Level Architecture overview please refer to [SYSTEM DESIGN](Docs/Solution/SystemOverview.docx)
 
-Due to time constraints the solution lacks of:
-- Unit and integration tests — only a few example tests have been included to demonstrate the intended testing approach.
+---
+
+### 🚀 How to Run
+
+- Download and extract
+- Make sure docker desktop is running (this build is tested on Windows 11 with Docker 4.28.0 with Engine: 25.0.3)
+- Open powershell console and navigate to src folder
+- execute ps script - start.ps1 or execute command 'docker compose up -d'
+- Both commands do the same job. If there were no images already, command will build the images and eventually start
+
+## Test the API endpoints
+For testing purposes POSTMAN collection is provided:
+- [POSTMAN 2.1](Docs/Solution/Cloud%20Sales%20System%20-%20CRAYON(2.0).postman_collection.json)
+- [POSTMAN 2.0](Docs/Solution/Cloud%20Sales%20System%20-%20CRAYON(2.0).postman_collection.json)
+- [POSTMAN ENVIRONMENT](Docs/Solution/CrayonEnv.postman_environment.json)
+
+After importing env and collections, choosing environemnt in postman, you are ready to go!
+
+Collection structure:
+- GATEWAY - folder with gateway endpoints
+- Customers - endpoints for Customer API microservice
+- Accounts - endpoints for Account API microservice
+- Licences - endpoints for Licence API microservice
+- Products - endpoints for Products API microservice
+- HEALTHCHECK - endpoint for system healthcheck
+
+
+### ❌ How to Stop
+- Powershell navigate into the same directory (src)
+- execute ps script - stop.ps1, or execute command 'docker compose down'
+- This will stop and remove all containers.
+
+---
+
+## HUGE TO-DOs
+Due to time constraints, most of the core business logic has not been fully implemented. The focus was placed on setting up the structure, demonstrating intent, and showcasing a possible approach.
+Required improvements:
+- Unit and integration tests — only a few examples tests have been included to demonstrate the intended testing approach.
 - Sofisticated exception handling (Middleware, ProblemDetails...)
 - Better validation (Fluent if needed)
 - Workers not implemented
 - Auth done just as mock example (passing some info through custom request header)
-- Microservices should be communicating via SSL
+- Microservices should communicate via SSL
