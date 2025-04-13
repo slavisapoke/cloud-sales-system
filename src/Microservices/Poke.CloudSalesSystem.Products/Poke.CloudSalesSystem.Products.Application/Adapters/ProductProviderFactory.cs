@@ -9,7 +9,7 @@ using Poke.CloudSalesSystem.Products.Application.Configuration;
 namespace Poke.CloudSalesSystem.Products.Application.Adapters
 {
     public class ProductProviderFactory(IServiceProvider serviceProvider,
-        ProductProvidersConfiguration providerRegister)
+        ProductProvidersConfiguration providerRegister) : IProductProviderFactory
     {
         public IProductsProvider GetProvider(Guid providerId)
         { 

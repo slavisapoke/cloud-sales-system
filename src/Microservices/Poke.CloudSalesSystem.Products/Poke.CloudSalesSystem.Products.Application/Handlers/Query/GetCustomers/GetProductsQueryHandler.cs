@@ -3,7 +3,6 @@ using MediatR;
 using Poke.CloudSalesSystem.Common.Cache.Fusion.Extensions;
 using Poke.CloudSalesSystem.Common.Contracts.Products;
 using Poke.CloudSalesSystem.Products.Application.Abstract;
-using Poke.CloudSalesSystem.Products.Application.Adapters;
 using Poke.CloudSalesSystem.Products.Application.Constants;
 using Poke.CloudSalesSystem.Products.Application.Handlers.Query.GetCustomers;
 using Poke.CloudSalesSystem.Products.Application.Helpers;
@@ -13,7 +12,7 @@ namespace Poke.CloudSalesSystem.Products.Application.Handlers.Query.GetCase;
 
 public class GetProductsQueryHandler(
     IFusionCache cache,
-    ProductProviderFactory providerFactory) : IRequestHandler<GetProductsQuery, Result<IReadOnlyCollection<Product>>>
+    IProductProviderFactory providerFactory) : IRequestHandler<GetProductsQuery, Result<IReadOnlyCollection<Product>>>
 {
     public async Task<Result<IReadOnlyCollection<Product>>> Handle(GetProductsQuery request, CancellationToken cancellationToken)
     {
