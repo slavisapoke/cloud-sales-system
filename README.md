@@ -82,10 +82,10 @@ After importing env and collections, choosing environemnt in postman, you are re
 
 Collection structure:
 - GATEWAY - folder with gateway endpoints - http://localhost:7000/swagger
-- Customers - endpoints for Customer API microservice - http://localhost:7001
-- Accounts - endpoints for Account API microservice - http://localhost:7002
-- Licences - endpoints for Licence API microservice - http://localhost:7003
-- Products - endpoints for Products API microservice - http://localhost:7004
+- Customers - endpoints for Customer API microservice - http://localhost:7001/swagger
+- Accounts - endpoints for Account API microservice - http://localhost:7002/swagger
+- Licences - endpoints for Licence API microservice - http://localhost:7003/swagger
+- Products - endpoints for Products API microservice - http://localhost:7004/swagger
 - HEALTHCHECK - endpoint for system healthcheck  - http://localhost:7000/readiness
 
 
