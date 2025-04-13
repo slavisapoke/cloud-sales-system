@@ -1,0 +1,43 @@
+@startuml
+participant "Client Application/Service" as C
+participant "Gateway" as G
+participant "Notification Queue" as NQ
+participant "Products API" as P
+participant "Redis Cache" as RC
+participant "Cloud Computing Provider" as CCP
+
+|||
+group Cache check
+|||
+C -> G: Get products (providerId)
+activate G
+|||
+G -> P: Get products (providerId)
+activate P 
+P -> RC: Check for cached products for providerId
+RC -> P: *cached products*
+P -> G: product collection
+end
+
+|||
+group Resolve registered provider
+P -> P: Resolve provider by providerId
+else Provider not registered
+P -> G: Error
+G -> C: Error
+end 
+|||
+P -> CCP: Get products from CCP (resolved provider)
+|||
+CCP -> P: List of products
+|||
+P -> P: Cache products for this provider
+|||
+P -> RC: Cache the procuts
+P -> NQ: ProductListUpdated(providerId)
+|||
+P -> G: List of products
+G -> C: List of products
+||| 
+
+@enduml
