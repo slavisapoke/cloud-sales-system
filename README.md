@@ -60,6 +60,8 @@ The following components are placed in separate Common library **Poke.CloudSales
 ## System Design (HLA)
 For High Level Architecture overview please refer to [SYSTEM DESIGN](Docs/Solution/SystemOverview.docx)
 
+Additional - Designs, plantuml and draw.io resources [RESOURCES](Docs/Solution/Resources)
+
 ---
 
 ### 🚀 How to Run
@@ -97,7 +99,7 @@ Collection structure:
 ## HUGE TO-DOs
 Due to time constraints, most of the core business logic has not been fully implemented. The focus was placed on setting up the structure, demonstrating intent, and showcasing a possible approach.
 Required improvements:
-- Unit and integration tests — only a few examples tests have been included to demonstrate the intended testing approach.
+- Unit and integration tests — only a few examples have been included to demonstrate the intended testing approach.
 - Sofisticated exception handling (Middleware, ProblemDetails...)
 - Better validation (Fluent if needed)
 - Workers not implemented
