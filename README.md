@@ -2,7 +2,7 @@
 
 ## 📝 Assignment Overview
 
-This solution was developed as part of a technical assignment for Crayon. The goal was to implement a simplified **cloud sales system** that allows customers to manage software licenses offered by a Cloud Computing Provider (CCP).
+This solution was developed as part of a technical assignment for one company. Deadline - 5 days. The goal was to implement a simplified **cloud sales system** that allows customers to manage software licenses offered by a Cloud Computing Provider (CCP).
 
 ### 📌 Functional Requirements
 
